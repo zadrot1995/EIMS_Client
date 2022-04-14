@@ -1,0 +1,9 @@
+<mat-list>
+  <mat-list-item *ngFor="let university of universities">
+    <mat-icon url="" matListIcon></mat-icon>
+    <h3 matLine> {{university.name}} </h3>
+    <p matLine>
+      <span class="demo-2"> -- {{university.about}} </span>
+    </p>
+  </mat-list-item>
+</mat-list>
