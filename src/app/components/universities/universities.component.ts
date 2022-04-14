@@ -20,7 +20,6 @@ export class UniversitiesComponent implements OnInit {
         {
           var arr = x as University[];
           this.universities = arr;
-          debugger;
         });
   }
 }

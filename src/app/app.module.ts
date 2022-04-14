@@ -12,6 +12,8 @@ import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
+import { InstitutesComponent } from './components/institutes/institutes.component';
+import { AddInstituteComponent } from './components/add-institute/add-institute.component';
 
 const routes: Routes = [
   {
@@ -26,6 +28,14 @@ const routes: Routes = [
     path: 'universities/add',
     component: AddUniversitiesComponent,
   },
+  {
+    path: 'institute',
+    component: InstitutesComponent,
+  },
+  {
+    path: 'institute/add',
+    component: AddInstituteComponent,
+  },
 ];
 
 @NgModule({
@@ -35,7 +45,9 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     UniversitiesComponent,
-    AddUniversitiesComponent
+    AddUniversitiesComponent,
+    InstitutesComponent,
+    AddInstituteComponent
   ],
     imports: [
         BrowserModule,

@@ -9,9 +9,9 @@ export class HttpBaseService{
   constructor(private http: HttpClient) {}
 
   Get(endPoint: string){
-    return this.http.get(ApiRouts.baseUrl + endPoint);
+    return this.http.get(endPoint);
   }
   Post(data: any, endPoint: string){
-    return this.http.post(ApiRouts.baseUrl + endPoint, data );
+    return this.http.post(endPoint, data );
   }
 }
