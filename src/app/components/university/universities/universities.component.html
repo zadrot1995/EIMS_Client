@@ -1,8 +1,38 @@
-<div *ngFor="let university of universities">
-  <div class="row">
-    <div class="col-12">
-      <a routerLink="edit/{{university.id}}">{{university.name}}</a>
+<div class="container">
+<div *ngIf="!loading">
+<div *ngFor="let university of universities" class="universityList">
+  <div class="">
+    <a routerLink="edit/{{university.id}}">
+      <div class="row universityCard border-button ">
+    <div class="col-8">
+      <div class="row">
+        <div class="col-12">
+      <span class="universityTitle">{{university.name}}</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+      <span class="universityDescription ">
+        {{shortDescription(university.about)}}      </span>
+        </div>
+      </div>
     </div>
+        <div class="col-1">
+
+        </div>
+    <div class="col-3" *ngIf="university !==undefined">
+      <img class="universityIcon" src="https://localhost:44304/api/universities/image/{{university.imageContents[0].imageName}}">
+    </div>
+      </div>
+    </a>
   </div>
 
+</div>
+</div>
+<div class="row" *ngIf="loading">
+  <div class="col-12 center">
+    <app-preloader></app-preloader>
+  </div>
+
+</div>
 </div>

@@ -4,8 +4,8 @@
     <label for="first_name">Name</label>
   </div>
 
-  <div *ngIf="university.images !== null">
-    <div *ngFor="let imageContent of university.images">
+  <div *ngIf="university.imageContents !== null">
+    <div *ngFor="let imageContent of university.imageContents">
       <div class="row">
         <div class="col-12">
           <img src="{{imageContent.imageUrl}}">
@@ -24,6 +24,15 @@
     </form>
   </div>
 </div>
+
+<div *ngFor="let img of university.imageContents">
+  <div class="row" *ngIf="university !==undefined">
+    <div class="col">
+    <img src="https://localhost:44304/api/universities/image/{{img.imageName}}">
+    </div>
+  </div>
+</div>
+
 <div>
   <input type="file" (change)="onFileSelected($event)">
 </div>

@@ -5,5 +5,5 @@ export class University {
   id: Guid;
   name: string;
   about: string;
-  images: ImageContent[];
+  imageContents: ImageContent[];
 }

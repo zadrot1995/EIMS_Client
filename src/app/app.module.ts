@@ -15,6 +15,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { InstitutesComponent } from './components/institutes/institutes.component';
 import { AddInstituteComponent } from './components/add-institute/add-institute.component';
 import { EditUnivercityComponent } from './components/university/edit-univercity/edit-univercity.component';
+import { PreloaderComponent } from './components/preloader/preloader.component';
 
 const routes: Routes = [
   {
@@ -53,7 +54,8 @@ const routes: Routes = [
     AddUniversitiesComponent,
     InstitutesComponent,
     AddInstituteComponent,
-    EditUnivercityComponent
+    EditUnivercityComponent,
+    PreloaderComponent
   ],
     imports: [
         BrowserModule,

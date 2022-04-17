@@ -12,14 +12,24 @@ import {MatListModule} from '@angular/material/list';
 export class UniversitiesComponent implements OnInit {
   universities: University[];
   constructor(public httpBaseService: HttpBaseService) {}
-
+  loading = true;
   ngOnInit(): void {
 
       this.httpBaseService.Get(ApiRouts.getUniversities)
         .subscribe(x =>
         {
           var arr = x as University[];
+          console.log(arr);
           this.universities = arr;
+          this.loading = false;
         });
+  }
+  shortDescription(str:string){
+    if(str.length > 30){
+      return str.substr(0, 200) + '...';
+    }
+    else {
+      return str;
+    }
   }
 }
