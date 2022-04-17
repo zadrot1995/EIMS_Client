@@ -6,14 +6,15 @@ import {AddStudentsComponent} from './components/add-students/add-students.compo
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import {HttpClientModule} from '@angular/common/http';
-import { UniversitiesComponent } from './components/universities/universities.component';
-import { AddUniversitiesComponent } from './components/add-universities/add-universities.component';
+import { UniversitiesComponent } from './components/university/universities/universities.component';
+import { AddUniversitiesComponent } from './components/university/add-universities/add-universities.component';
 import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import { InstitutesComponent } from './components/institutes/institutes.component';
 import { AddInstituteComponent } from './components/add-institute/add-institute.component';
+import { EditUnivercityComponent } from './components/university/edit-univercity/edit-univercity.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
     path: 'institute/add',
     component: AddInstituteComponent,
   },
+  {
+    path: 'universities/edit/:id',
+    component: EditUnivercityComponent,
+  },
 ];
 
 @NgModule({
@@ -47,7 +52,8 @@ const routes: Routes = [
     UniversitiesComponent,
     AddUniversitiesComponent,
     InstitutesComponent,
-    AddInstituteComponent
+    AddInstituteComponent,
+    EditUnivercityComponent
   ],
     imports: [
         BrowserModule,

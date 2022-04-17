@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {University} from '../../Models/University';
-import {HttpBaseService} from '../../services/httpBase.service';
-import {ApiRouts} from '../../constants';
+import {University} from '../../../Models/University';
+import {HttpBaseService} from '../../../services/httpBase.service';
+import {ApiRouts} from '../../../constants';
 import {MatListModule} from '@angular/material/list';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpBaseService} from '../../services/httpBase.service';
-import {University} from '../../Models/University';
-import {ApiRouts} from '../../constants';
+import {HttpBaseService} from '../../../services/httpBase.service';
+import {University} from '../../../Models/University';
+import {ApiRouts} from '../../../constants';
 import {Router} from '@angular/router';
 
 @Component({
@@ -11,13 +11,13 @@ import {Router} from '@angular/router';
 })
 export class AddUniversitiesComponent implements OnInit {
 
+  selectedFile = null;
   university = new University();
   result: object;
   constructor(public httpBaseService: HttpBaseService,
               private router: Router) {}
 
   addUniversity(){
-    debugger;
     this.httpBaseService.Post(this.university, ApiRouts.getUniversities).subscribe(x =>
     {
       console.log(x);
