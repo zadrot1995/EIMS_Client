@@ -15,6 +15,8 @@ export class EditUnivercityComponent implements OnInit {
   selectedFile = null;
   university = new University();
   result: object;
+  loading = true;
+
 
   constructor(public httpBaseService: HttpBaseService,
               private router: Router,
@@ -28,18 +30,30 @@ export class EditUnivercityComponent implements OnInit {
     this.httpBaseService.Get(ApiRouts.getUniversities + '/' + this.university.id.toString())
       .subscribe(x => {
         this.university = x as University;
+        this.loading = false;
+        console.log(x);
       });
   }
 
   onFileSelected(event) {
+    debugger;
     this.selectedFile = event.target.files[0];
     let testData:FormData = new FormData();
     testData.append('file', this.selectedFile, this.selectedFile.name);
     this.http.post(ApiRouts.addUniversityImage + '/' + this.university.id.toString(), testData).subscribe(response => {
       console.log(response);
     });
+    window.location.reload();
   }
+  deleteImage(imageId){
+    this.httpBaseService.Delete(ApiRouts.addUniversityImage + "/delete/" + imageId)
+      .subscribe(x =>
+      {
+        console.log(x);
+      });
+    window.location.reload();
 
+  }
   editUniversity() {
   }
 }

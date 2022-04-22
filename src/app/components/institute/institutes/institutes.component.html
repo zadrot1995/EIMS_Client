@@ -1,0 +1,52 @@
+<div class="container">
+  <div *ngIf="!loading">
+    <div *ngFor="let institute of institutes" class="universityList">
+      <div class="row">
+        <div class="col">
+          <a routerLink="edit/{{institute.id}}">
+            <div class="row universityCard border-button ">
+              <div class="col-8">
+                <div class="row">
+                  <div class="col-12">
+                    <span class="universityTitle">{{institute.name}}</span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+      <span class="universityDescription ">
+        {{dataFormatHelper.shortDescription(institute.about)}}      </span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-1">
+              </div>
+              <div class="col-3" *ngIf="!loading">
+                <img class="universityIcon" src="assets/img/university3.png">
+              </div>
+
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <a routerLink="edit/{{institute.id}}" class="btn waves-effect waves-light  red darken-4" type="submit" name="action">Edit
+            <i class="material-icons right">send</i>
+          </a>
+        </div>
+        <div class="col-3">
+          <button (click)="deleteUniversity(institute.id)" class="btn waves-effect waves-light  red darken-4" type="submit" name="action">Remove
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="row" *ngIf="loading">
+    <div class="col-12 center">
+      <app-preloader></app-preloader>
+    </div>
+
+  </div>
+</div>

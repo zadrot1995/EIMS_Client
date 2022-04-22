@@ -1,10 +1,12 @@
 <div class="container">
 <div *ngIf="!loading">
 <div *ngFor="let university of universities" class="universityList">
-  <div class="">
+  <div class="row">
+    <div class="col">
     <a routerLink="edit/{{university.id}}">
-      <div class="row universityCard border-button ">
-    <div class="col-8">
+      <div class="universityCard border-button">
+      <div class="row  ">
+    <div class="col-md-8 col-sm-12">
       <div class="row">
         <div class="col-12">
       <span class="universityTitle">{{university.name}}</span>
@@ -18,13 +20,32 @@
       </div>
     </div>
         <div class="col-1">
-
         </div>
-    <div class="col-3" *ngIf="university !==undefined">
-      <img class="universityIcon" src="https://localhost:44304/api/universities/image/{{university.imageContents[0].imageName}}">
+    <div class="col-md-3 col-sm-12" *ngIf="!loading">
+      <img class="universityIcon" src="{{getImageOrDefault(university)}}">
     </div>
       </div>
+        <div style="display: flex;">
+      <div class="institute" *ngFor="let institute of university.institutes">
+          <span>{{institute.name}}</span>
+      </div>
+        </div>
+
+      </div>
     </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <a routerLink="edit/{{university.id}}" class="btn waves-effect waves-light  red darken-4" type="submit" name="action">Edit
+        <i class="material-icons right">send</i>
+      </a>
+    </div>
+    <div class="col-3">
+      <button (click)="deleteUniversity(university.id)" class="btn waves-effect waves-light  red darken-4" type="submit" name="action">Remove
+        <i class="material-icons right">send</i>
+      </button>
+    </div>
   </div>
 
 </div>

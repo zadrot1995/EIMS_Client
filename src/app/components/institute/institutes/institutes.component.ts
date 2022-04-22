@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Institute} from '../../Models/Institute';
-import {HttpBaseService} from '../../services/httpBase.service';
-import {ApiRouts} from '../../constants';
+import {Institute} from '../../../Models/Institute';
+import {HttpBaseService} from '../../../services/httpBase.service';
+import {ApiRouts} from '../../../constants';
+import {DataFormatHelper} from "../../../services/DataFormatHelper";
 
 @Component({
   selector: 'app-institutes',
@@ -10,7 +11,9 @@ import {ApiRouts} from '../../constants';
 })
 export class InstitutesComponent implements OnInit {
   institutes: Institute[];
-  constructor(public httpBaseService: HttpBaseService) {}
+  loading = true;
+  constructor(public httpBaseService: HttpBaseService,
+              public dataFormatHelper: DataFormatHelper) {}
 
   ngOnInit(): void {
 
@@ -19,6 +22,7 @@ export class InstitutesComponent implements OnInit {
       {
         const arr = x as Institute[];
         this.institutes = arr;
+        this.loading = false;
       });
   }
 

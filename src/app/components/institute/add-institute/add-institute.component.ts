@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Institute} from "../../Models/Institute";
-import {HttpBaseService} from "../../services/httpBase.service";
+import {Institute} from "../../../Models/Institute";
+import {HttpBaseService} from "../../../services/httpBase.service";
 import {Router} from "@angular/router";
-import {ApiRouts} from "../../constants";
+import {ApiRouts} from "../../../constants";
+import {University} from "../../../Models/University";
 
 
 @Component({
@@ -13,6 +14,8 @@ import {ApiRouts} from "../../constants";
 export class AddInstituteComponent implements OnInit {
 
   institute = new Institute();
+  universities: University[] = [];
+  loading = false;
   result: object;
   constructor(public httpBaseService: HttpBaseService,
               private router: Router) {}
@@ -24,5 +27,13 @@ export class AddInstituteComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+    this.httpBaseService.Get(ApiRouts.getUniversities)
+      .subscribe(x =>
+      {
+        var arr = x as University[];
+        console.log(x);
+        this.universities = arr;
+        this.loading = false;
+      });
   }
 }

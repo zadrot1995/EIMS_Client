@@ -19,7 +19,7 @@ export class UniversitiesComponent implements OnInit {
         .subscribe(x =>
         {
           var arr = x as University[];
-          console.log(arr);
+          console.log(x);
           this.universities = arr;
           this.loading = false;
         });
@@ -31,5 +31,20 @@ export class UniversitiesComponent implements OnInit {
     else {
       return str;
     }
+  }
+  getImageOrDefault(university) {
+    if (university.imageContents.length === 0) {
+      return 'assets/img/university3.png';
+    }
+    else {
+      return 'https://localhost:44304/api/universities/image/' + university.imageContents[0].imageName;
+    }
+  }
+  deleteUniversity(universityId){
+    this.httpBaseService.Delete(ApiRouts.getUniversities + "/" + universityId)
+      .subscribe(x =>
+      {
+        console.log(x);
+      });
   }
 }

@@ -1,0 +1,11 @@
+
+<input [(ngModel)]="institute.name" placeholder="Name" type="text" class="textInput validate" name="name">
+<input [(ngModel)]="institute.about" placeholder="About" type="text" class="textInput validate" name="about">
+<label for="universities">Select university</label>
+<select [(ngModel)]="institute.universityId" *ngFor="let university of universities" class="universitySelect" id="universities" name="universities">
+  <option value="{{university.id}}">{{university.name}}</option>
+</select>
+
+<button (click)="addInstitute()">
+  Add
+</button>

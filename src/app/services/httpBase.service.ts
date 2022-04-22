@@ -11,6 +11,9 @@ export class HttpBaseService{
   Get(endPoint: string){
     return this.http.get(endPoint);
   }
+  Delete(endPoint: string){
+    return this.http.delete(endPoint);
+  }
   Post(data: any, endPoint: string){
     return this.http.post(endPoint, data );
   }

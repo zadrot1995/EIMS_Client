@@ -12,8 +12,8 @@ import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
-import { InstitutesComponent } from './components/institutes/institutes.component';
-import { AddInstituteComponent } from './components/add-institute/add-institute.component';
+import { InstitutesComponent } from './components/institute/institutes/institutes.component';
+import { AddInstituteComponent } from './components/institute/add-institute/add-institute.component';
 import { EditUnivercityComponent } from './components/university/edit-univercity/edit-univercity.component';
 import { PreloaderComponent } from './components/preloader/preloader.component';
 
