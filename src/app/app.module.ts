@@ -18,6 +18,7 @@ import { EditUnivercityComponent } from './components/university/edit-univercity
 import { PreloaderComponent } from './components/preloader/preloader.component';
 import { EditInstituteComponent } from './components/institute/edit-institute/edit-institute.component';
 import { TeachersComponent } from './components/teachers/teachers/teachers.component';
+import { AddTeacherComponent } from './components/teachers/add-teacher/add-teacher.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
     path: 'teachers',
     component: TeachersComponent,
   },
+  {
+    path: 'teachers/add',
+    component: AddTeacherComponent,
+  },
 ];
 
 @NgModule({
@@ -67,7 +72,8 @@ const routes: Routes = [
     EditUnivercityComponent,
     PreloaderComponent,
     EditInstituteComponent,
-    TeachersComponent
+    TeachersComponent,
+    AddTeacherComponent
   ],
     imports: [
         BrowserModule,
