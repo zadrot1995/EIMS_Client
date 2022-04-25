@@ -17,6 +17,7 @@ import { AddInstituteComponent } from './components/institute/add-institute/add-
 import { EditUnivercityComponent } from './components/university/edit-univercity/edit-univercity.component';
 import { PreloaderComponent } from './components/preloader/preloader.component';
 import { EditInstituteComponent } from './components/institute/edit-institute/edit-institute.component';
+import { TeachersComponent } from './components/teachers/teachers/teachers.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
     path: 'institutes/edit/:id',
     component: EditInstituteComponent,
   },
+  {
+    path: 'teachers',
+    component: TeachersComponent,
+  },
 ];
 
 @NgModule({
@@ -61,7 +66,8 @@ const routes: Routes = [
     AddInstituteComponent,
     EditUnivercityComponent,
     PreloaderComponent,
-    EditInstituteComponent
+    EditInstituteComponent,
+    TeachersComponent
   ],
     imports: [
         BrowserModule,
