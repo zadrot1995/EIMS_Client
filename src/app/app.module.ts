@@ -16,6 +16,7 @@ import { InstitutesComponent } from './components/institute/institutes/institute
 import { AddInstituteComponent } from './components/institute/add-institute/add-institute.component';
 import { EditUnivercityComponent } from './components/university/edit-univercity/edit-univercity.component';
 import { PreloaderComponent } from './components/preloader/preloader.component';
+import { EditInstituteComponent } from './components/institute/edit-institute/edit-institute.component';
 
 const routes: Routes = [
   {
@@ -31,7 +32,7 @@ const routes: Routes = [
     component: AddUniversitiesComponent,
   },
   {
-    path: 'institute',
+    path: 'institutes',
     component: InstitutesComponent,
   },
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'universities/edit/:id',
     component: EditUnivercityComponent,
+  },
+  {
+    path: 'institutes/edit/:id',
+    component: EditInstituteComponent,
   },
 ];
 
@@ -55,7 +60,8 @@ const routes: Routes = [
     InstitutesComponent,
     AddInstituteComponent,
     EditUnivercityComponent,
-    PreloaderComponent
+    PreloaderComponent,
+    EditInstituteComponent
   ],
     imports: [
         BrowserModule,
