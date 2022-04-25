@@ -5,4 +5,5 @@ export const enum ApiRouts {
   editUniversity = "https://localhost:44304/api/universities/edit",
   addUniversityImage = "https://localhost:44304/api/universities/image",
   teachers = "https://localhost:44304/api/teachers",
+  groups = "https://localhost:44304/api/groups"
 }

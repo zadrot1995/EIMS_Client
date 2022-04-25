@@ -1,0 +1,53 @@
+<div class="container">
+  <div *ngIf="!loading">
+    <div *ngFor="let group of groups" class="universityList">
+      <div class="row">
+        <div class="col">
+          <a routerLink="edit/{{group.id}}">
+            <div class="universityCard border-button">
+              <div class="row  ">
+                <div class="col-md-8 col-sm-12">
+                  <div class="row">
+                    <div class="col-12">
+                      <span class="universityTitle">{{group.name}}</span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+      <span class="universityDescription ">
+        {{dataFormatHelper.shortDescription(group.about)}}      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-1">
+                </div>
+                <div class="col-md-3 col-sm-12" *ngIf="!loading">
+                  <img class="universityIcon" src="assets/img/university3.png">
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <a routerLink="edit/{{group.id}}" class="btn waves-effect waves-light  red darken-4" type="submit" name="action">Edit
+            <i class="material-icons right">send</i>
+          </a>
+        </div>
+        <div class="col-3">
+          <button (click)="deleteUniversity(group.id)" class="btn waves-effect waves-light  red darken-4" type="submit" name="action">Remove
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="row" *ngIf="loading">
+    <div class="col-12 center">
+      <app-preloader></app-preloader>
+    </div>
+
+  </div>
+</div>
