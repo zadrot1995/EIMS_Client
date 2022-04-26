@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import {AddStudentsComponent} from './components/add-students/add-students.component';
+import {AddStudentsComponent} from './components/student/add-students/add-students.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -21,6 +21,7 @@ import { TeachersComponent } from './components/teachers/teachers/teachers.compo
 import { AddTeacherComponent } from './components/teachers/add-teacher/add-teacher.component';
 import { GroupsComponent } from './components/group/groups/groups.component';
 import { AddGroupComponent } from './components/group/add-group/add-group.component';
+import { StudentsComponent } from './components/student/students/students.component';
 
 const routes: Routes = [
   {
@@ -67,6 +68,14 @@ const routes: Routes = [
     path: 'groups/add',
     component: AddGroupComponent,
   },
+  {
+    path: 'students',
+    component: StudentsComponent,
+  },
+  {
+    path: 'students/add',
+    component: AddStudentsComponent,
+  },
 ];
 
 @NgModule({
@@ -85,7 +94,8 @@ const routes: Routes = [
     TeachersComponent,
     AddTeacherComponent,
     GroupsComponent,
-    AddGroupComponent
+    AddGroupComponent,
+    StudentsComponent
   ],
     imports: [
         BrowserModule,
