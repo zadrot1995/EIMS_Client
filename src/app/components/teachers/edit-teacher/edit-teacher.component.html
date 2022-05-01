@@ -1,0 +1,46 @@
+<div class="container">
+  <div *ngIf="!loading">
+    <div class="row">
+      <div class="input-field col s6">
+        <input [(ngModel)]="teacher.firstName" id="first_name" type="text" class="validate" name="firstName">
+        <label for="first_name">First Name</label>
+      </div>
+      <div class="input-field col s6">
+        <input [(ngModel)]="teacher.secondName" id="second_name" type="text" class="validate" name="secondName">
+        <label for="first_name">First Name</label>
+      </div>
+      <div class="input-field col s6">
+        <input [(ngModel)]="teacher.degree" id="degree" type="text" class="validate" name="degree">
+        <label for="first_name">First Name</label>
+      </div>
+      <div class="input-field col s6">
+        <input [(ngModel)]="teacher.education" id="education" type="text" class="validate" name="education">
+        <label for="first_name">First Name</label>
+      </div>
+
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea style="height: 200px" name="about" [(ngModel)]="teacher.about" id="textarea1" class="materialize-textarea">{{teacher.about}}</textarea>
+              <label for="textarea1">About</label>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <button (click)="editTeacher()">
+        Edit
+      </button>
+    </div>
+  </div>
+  <div class="row" *ngIf="loading">
+    <div class="col-12 center">
+      <app-preloader></app-preloader>
+    </div>
+
+  </div>
+
+</div>

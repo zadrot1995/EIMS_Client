@@ -5,16 +5,18 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {Guid} from "guid-typescript";
 import {ApiRouts} from "../../../constants";
-import {Institute} from "../../../Models/Institute";
+import {Teacher} from "../../../Models/Teacher";
+import {Location} from '@angular/common';
+
 
 @Component({
-  selector: 'app-edit-institute',
-  templateUrl: './edit-institute.component.html',
-  styleUrls: ['./edit-institute.component.css']
+  selector: 'app-edit-teacher',
+  templateUrl: './edit-teacher.component.html',
+  styleUrls: ['./edit-teacher.component.css']
 })
-export class EditInstituteComponent implements OnInit {
+export class EditTeacherComponent implements OnInit {
   selectedFile = null;
-  institute = new Institute();
+  teacher = new Teacher();
   result: object;
   loading = true;
 
@@ -22,28 +24,28 @@ export class EditInstituteComponent implements OnInit {
   constructor(public httpBaseService: HttpBaseService,
               private router: Router,
               private route: ActivatedRoute,
-              private http: HttpClient
+              private http: HttpClient,
+              private location: Location
   ) {
   }
 
   ngOnInit(): void {
-    this.institute.id = Guid.parse(this.route.snapshot.paramMap.get('instituteId'));
-    this.httpBaseService.Get(ApiRouts.getInstitutes + '/' + this.institute.id.toString())
+    this.teacher.id = Guid.parse(this.route.snapshot.paramMap.get('teacherId'));
+
+    this.httpBaseService.Get(ApiRouts.teachers + '/' + this.teacher.id.toString())
       .subscribe(x => {
-        this.institute = x as Institute;
+        this.teacher = x as Teacher;
         this.loading = false;
         console.log(x);
       });
   }
-
-  editUniversity() {
+  editTeacher() {
     this.loading = true;
 
-    this.httpBaseService.Put(this.institute, ApiRouts.getInstitutes + "/" + this.institute.id).subscribe(x =>
+    this.httpBaseService.Put(this.teacher, ApiRouts.teachers + "/" + this.teacher.id).subscribe(x =>
     {
       console.log(x);
-      this.router.navigate(['institutes'], {});
+      this.location.back();
     });
   }
-
 }

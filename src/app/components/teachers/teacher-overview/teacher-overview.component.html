@@ -1,0 +1,30 @@
+<div class="container">
+  <div *ngIf="!loading">
+
+    <div>
+      <h1>{{teacher.firstName}} {{teacher.secondName}}</h1>
+    </div>
+    <div>
+      <span>{{teacher.about}}</span>
+    </div>
+    <div>
+      <h2>degree</h2>
+    </div>
+    <div>
+      <h4>{{teacher.degree}}</h4>
+    </div>
+    <div>
+      <h2>education</h2>
+    </div>
+    <div>
+      <h4>{{teacher.education}}</h4>
+    </div>
+
+  </div>
+  <div class="row" *ngIf="loading">
+    <div class="col-12 center">
+      <app-preloader></app-preloader>
+    </div>
+
+  </div>
+</div>

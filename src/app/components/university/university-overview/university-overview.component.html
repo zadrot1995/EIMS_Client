@@ -10,9 +10,11 @@
   <div>
     <h2>Institutes</h2>
   </div>
-  <div *ngFor="let institutes of university.institutes">
+  <div *ngFor="let institute of university.institutes">
     <div>
-      <h4>{{institutes.name}}</h4>
+      <a routerLink="/institutes/overview/{{institute.id}}">
+      <h4>{{institute.name}}</h4>
+      </a>
     </div>
   </div>
   <div *ngIf="!loading" class="row">

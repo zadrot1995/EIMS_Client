@@ -24,11 +24,14 @@ import { AddGroupComponent } from './components/group/add-group/add-group.compon
 import { StudentsComponent } from './components/student/students/students.component';
 import { UniversityOverviewComponent } from './components/university/university-overview/university-overview.component';
 import { InstituteOverviewComponent } from './components/institute/institute-overview/institute-overview.component';
+import { TeacherOverviewComponent } from './components/teachers/teacher-overview/teacher-overview.component';
+import { EditTeacherComponent } from './components/teachers/edit-teacher/edit-teacher.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: UniversitiesComponent,
+    redirectTo: '/universities',
+    pathMatch: 'full'
   },
   {
     path: 'universities',
@@ -47,7 +50,7 @@ const routes: Routes = [
     component: InstitutesComponent,
   },
   {
-    path: 'institute/add',
+    path: 'institutes/add/:universityId',
     component: AddInstituteComponent,
   },
   {
@@ -55,11 +58,11 @@ const routes: Routes = [
     component: InstituteOverviewComponent,
   },
   {
-    path: 'universities/edit/:id',
+    path: 'universities/edit/:universityId',
     component: EditUnivercityComponent,
   },
   {
-    path: 'institutes/edit/:id',
+    path: 'institutes/edit/:instituteId',
     component: EditInstituteComponent,
   },
   {
@@ -69,6 +72,14 @@ const routes: Routes = [
   {
     path: 'teachers/add',
     component: AddTeacherComponent,
+  },
+  {
+    path: 'teachers/overview/:teacherId',
+    component: TeacherOverviewComponent,
+  },
+  {
+    path: 'teachers/edit/:teacherId',
+    component: EditTeacherComponent,
   },
   {
     path: 'groups',
@@ -107,7 +118,9 @@ const routes: Routes = [
     AddGroupComponent,
     StudentsComponent,
     UniversityOverviewComponent,
-    InstituteOverviewComponent
+    InstituteOverviewComponent,
+    TeacherOverviewComponent,
+    EditTeacherComponent
   ],
     imports: [
         BrowserModule,

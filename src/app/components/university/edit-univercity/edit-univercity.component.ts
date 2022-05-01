@@ -26,7 +26,8 @@ export class EditUnivercityComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.university.id = Guid.parse(this.route.snapshot.paramMap.get('id'));
+    this.university.id = Guid.parse(this.route.snapshot.paramMap.get('universityId'));
+
     this.httpBaseService.Get(ApiRouts.getUniversities + '/' + this.university.id.toString())
       .subscribe(x => {
         this.university = x as University;

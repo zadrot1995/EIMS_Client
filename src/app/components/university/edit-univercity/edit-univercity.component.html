@@ -17,6 +17,17 @@
   </div>
 </div>
 
+  <div *ngFor="let institute of university.institutes">
+    <div>
+      <a routerLink="/institutes/edit/{{institute.id}}">
+        <h4>{{institute.name}}</h4>
+      </a>
+    </div>
+  </div>
+  <div>
+    <a routerLink="/institutes/add/{{university.id}}">Add</a>
+  </div>
+
 <div *ngIf="!loading" class="row">
   <div class="col-3" *ngFor="let image of university.imageContents">
       <div>

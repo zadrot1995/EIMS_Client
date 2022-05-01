@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Institute} from "../../../Models/Institute";
 import {HttpBaseService} from "../../../services/httpBase.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ApiRouts} from "../../../constants";
 import {University} from "../../../Models/University";
+import {Guid} from "guid-typescript";
 
 
 @Component({
@@ -18,7 +19,8 @@ export class AddInstituteComponent implements OnInit {
   loading = false;
   result: object;
   constructor(public httpBaseService: HttpBaseService,
-              private router: Router) {}
+              private router: Router,
+              private route: ActivatedRoute,) {}
 
   addInstitute(){
     this.httpBaseService.Post(this.institute, ApiRouts.getInstitutes).subscribe(x =>
@@ -27,6 +29,8 @@ export class AddInstituteComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+    let universityId = Guid.parse(this.route.snapshot.paramMap.get('universityId'));
+    this.institute.universityId = universityId;
     this.httpBaseService.Get(ApiRouts.getUniversities)
       .subscribe(x =>
       {
