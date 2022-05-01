@@ -8,11 +8,12 @@ import {ApiRouts} from "../../../constants";
 import {Institute} from "../../../Models/Institute";
 
 @Component({
-  selector: 'app-edit-institute',
-  templateUrl: './edit-institute.component.html',
-  styleUrls: ['./edit-institute.component.css']
+  selector: 'app-institute-overview',
+  templateUrl: './institute-overview.component.html',
+  styleUrls: ['./institute-overview.component.css']
 })
-export class EditInstituteComponent implements OnInit {
+export class InstituteOverviewComponent implements OnInit {
+
   selectedFile = null;
   institute = new Institute();
   result: object;
@@ -35,15 +36,4 @@ export class EditInstituteComponent implements OnInit {
         console.log(x);
       });
   }
-
-  editUniversity() {
-    this.loading = true;
-
-    this.httpBaseService.Put(this.institute, ApiRouts.getInstitutes + "/" + this.institute.id).subscribe(x =>
-    {
-      console.log(x);
-      this.router.navigate(['institutes'], {});
-    });
-  }
-
 }

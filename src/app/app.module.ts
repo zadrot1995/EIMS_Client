@@ -22,6 +22,8 @@ import { AddTeacherComponent } from './components/teachers/add-teacher/add-teach
 import { GroupsComponent } from './components/group/groups/groups.component';
 import { AddGroupComponent } from './components/group/add-group/add-group.component';
 import { StudentsComponent } from './components/student/students/students.component';
+import { UniversityOverviewComponent } from './components/university/university-overview/university-overview.component';
+import { InstituteOverviewComponent } from './components/institute/institute-overview/institute-overview.component';
 
 const routes: Routes = [
   {
@@ -37,12 +39,20 @@ const routes: Routes = [
     component: AddUniversitiesComponent,
   },
   {
+    path: 'universities/overview/:id',
+    component: UniversityOverviewComponent,
+  },
+  {
     path: 'institutes',
     component: InstitutesComponent,
   },
   {
     path: 'institute/add',
     component: AddInstituteComponent,
+  },
+  {
+    path: 'institutes/overview/:id',
+    component: InstituteOverviewComponent,
   },
   {
     path: 'universities/edit/:id',
@@ -95,7 +105,9 @@ const routes: Routes = [
     AddTeacherComponent,
     GroupsComponent,
     AddGroupComponent,
-    StudentsComponent
+    StudentsComponent,
+    UniversityOverviewComponent,
+    InstituteOverviewComponent
   ],
     imports: [
         BrowserModule,

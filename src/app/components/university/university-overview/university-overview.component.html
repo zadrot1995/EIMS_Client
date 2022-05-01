@@ -1,0 +1,32 @@
+<div class="container">
+  <div *ngIf="!loading">
+
+  <div>
+    <h1>{{university.name}}</h1>
+  </div>
+  <div>
+    <span>{{university.about}}</span>
+  </div>
+  <div>
+    <h2>Institutes</h2>
+  </div>
+  <div *ngFor="let institutes of university.institutes">
+    <div>
+      <h4>{{institutes.name}}</h4>
+    </div>
+  </div>
+  <div *ngIf="!loading" class="row">
+    <div class="col-3" *ngFor="let image of university.imageContents">
+      <div>
+        <img style="margin-top: 20px" class="universityIcon" src="https://localhost:44304/api/universities/image/{{image.imageName}}">
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="row" *ngIf="loading">
+    <div class="col-12 center">
+      <app-preloader></app-preloader>
+    </div>
+
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import { Guid } from 'guid-typescript';
 import {University} from "./University";
 import {ImageContent} from "./ImageContent";
+import {Teacher} from "./Teacher";
 
 export class Institute {
   id: Guid;
@@ -9,5 +10,6 @@ export class Institute {
   universityId: Guid;
   university: University;
   imageContents: ImageContent[];
+  teachers: Teacher[];
 
 }

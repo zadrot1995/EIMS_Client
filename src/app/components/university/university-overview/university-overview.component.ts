@@ -5,16 +5,15 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {Guid} from "guid-typescript";
 import {ApiRouts} from "../../../constants";
-import {Institute} from "../../../Models/Institute";
 
 @Component({
-  selector: 'app-edit-institute',
-  templateUrl: './edit-institute.component.html',
-  styleUrls: ['./edit-institute.component.css']
+  selector: 'app-university-overview',
+  templateUrl: './university-overview.component.html',
+  styleUrls: ['./university-overview.component.css']
 })
-export class EditInstituteComponent implements OnInit {
+export class UniversityOverviewComponent implements OnInit {
   selectedFile = null;
-  institute = new Institute();
+  university = new University();
   result: object;
   loading = true;
 
@@ -27,23 +26,12 @@ export class EditInstituteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.institute.id = Guid.parse(this.route.snapshot.paramMap.get('id'));
-    this.httpBaseService.Get(ApiRouts.getInstitutes + '/' + this.institute.id.toString())
+    this.university.id = Guid.parse(this.route.snapshot.paramMap.get('id'));
+    this.httpBaseService.Get(ApiRouts.getUniversities + '/' + this.university.id.toString())
       .subscribe(x => {
-        this.institute = x as Institute;
+        this.university = x as University;
         this.loading = false;
         console.log(x);
       });
   }
-
-  editUniversity() {
-    this.loading = true;
-
-    this.httpBaseService.Put(this.institute, ApiRouts.getInstitutes + "/" + this.institute.id).subscribe(x =>
-    {
-      console.log(x);
-      this.router.navigate(['institutes'], {});
-    });
-  }
-
 }

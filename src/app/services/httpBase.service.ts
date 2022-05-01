@@ -17,4 +17,7 @@ export class HttpBaseService{
   Post(data: any, endPoint: string){
     return this.http.post(endPoint, data );
   }
+  Put(data: any, endPoint: string){
+    return this.http.put(endPoint, data );
+  }
 }

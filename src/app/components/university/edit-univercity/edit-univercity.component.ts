@@ -55,5 +55,12 @@ export class EditUnivercityComponent implements OnInit {
 
   }
   editUniversity() {
+    this.loading = true;
+
+    this.httpBaseService.Put(this.university, ApiRouts.getUniversities + "/" + this.university.id).subscribe(x =>
+    {
+      console.log(x);
+      this.router.navigate(['universities'], {});
+    });
   }
 }
