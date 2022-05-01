@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ApiRouts} from "../../../constants";
 import {University} from "../../../Models/University";
 import {Guid} from "guid-typescript";
+import {Location} from "@angular/common";
 
 
 @Component({
@@ -20,12 +21,13 @@ export class AddInstituteComponent implements OnInit {
   result: object;
   constructor(public httpBaseService: HttpBaseService,
               private router: Router,
-              private route: ActivatedRoute,) {}
+              private route: ActivatedRoute,
+              private location: Location) {}
 
   addInstitute(){
     this.httpBaseService.Post(this.institute, ApiRouts.getInstitutes).subscribe(x =>
     {
-      this.router.navigate(['institute'], {});
+      this.location.back();
     });
   }
   ngOnInit(): void {

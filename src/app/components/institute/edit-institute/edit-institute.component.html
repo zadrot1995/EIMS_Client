@@ -22,10 +22,25 @@
     </div>
     <div *ngFor="let teacher of institute.teachers">
       <a routerLink="/teachers/edit/{{teacher.id}}">
-        <div>
+        <div class="row">
+        <div class="col-6">
           <h4>{{teacher.firstName}} {{teacher.secondName}}</h4>
         </div>
+          <div class="col-3">
+            <button>
+              Edit
+            </button>
+          </div>
+        <div class="col-3">
+          <button>
+            Delete
+          </button>
+        </div>
+        </div>
       </a>
+    </div>
+    <div>
+      <a routerLink="/teachers/add/{{institute.id}}">Add</a>
     </div>
 
   <div *ngIf="!loading" class="row">

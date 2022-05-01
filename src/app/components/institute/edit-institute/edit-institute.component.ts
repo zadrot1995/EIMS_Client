@@ -6,6 +6,7 @@ import {HttpClient} from "@angular/common/http";
 import {Guid} from "guid-typescript";
 import {ApiRouts} from "../../../constants";
 import {Institute} from "../../../Models/Institute";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-edit-institute',
@@ -22,7 +23,8 @@ export class EditInstituteComponent implements OnInit {
   constructor(public httpBaseService: HttpBaseService,
               private router: Router,
               private route: ActivatedRoute,
-              private http: HttpClient
+              private http: HttpClient,
+              private location: Location
   ) {
   }
 
@@ -42,7 +44,7 @@ export class EditInstituteComponent implements OnInit {
     this.httpBaseService.Put(this.institute, ApiRouts.getInstitutes + "/" + this.institute.id).subscribe(x =>
     {
       console.log(x);
-      this.router.navigate(['institutes'], {});
+      this.location.back();
     });
   }
 

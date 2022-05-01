@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ApiRouts} from "../../../constants";
 import {Guid} from "guid-typescript";
 import {HttpClient} from "@angular/common/http";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-edit-univercity',
@@ -21,7 +22,9 @@ export class EditUnivercityComponent implements OnInit {
   constructor(public httpBaseService: HttpBaseService,
               private router: Router,
               private route: ActivatedRoute,
-              private http: HttpClient
+              private http: HttpClient,
+              private location: Location
+
   ) {
   }
 
@@ -61,7 +64,7 @@ export class EditUnivercityComponent implements OnInit {
     this.httpBaseService.Put(this.university, ApiRouts.getUniversities + "/" + this.university.id).subscribe(x =>
     {
       console.log(x);
-      this.router.navigate(['universities'], {});
+      this.location.back();
     });
   }
 }

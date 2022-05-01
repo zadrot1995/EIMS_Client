@@ -21,9 +21,11 @@
       <h2>Groups</h2>
     </div>
     <div *ngFor="let group of institute.groups">
+      <a routerLink="/groups/overview/{{group.id}}">
       <div>
         <h4>{{group.name}}</h4>
       </div>
+      </a>
     </div>
     <div *ngIf="!loading" class="row">
       <div class="col-3" *ngFor="let image of institute.imageContents">

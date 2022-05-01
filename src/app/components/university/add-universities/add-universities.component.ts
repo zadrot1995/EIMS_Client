@@ -3,6 +3,7 @@ import {HttpBaseService} from '../../../services/httpBase.service';
 import {University} from '../../../Models/University';
 import {ApiRouts} from '../../../constants';
 import {Router} from '@angular/router';
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-add-universities',
@@ -15,13 +16,14 @@ export class AddUniversitiesComponent implements OnInit {
   university = new University();
   result: object;
   constructor(public httpBaseService: HttpBaseService,
-              private router: Router) {}
+              private router: Router,
+              private location: Location) {}
 
   addUniversity(){
     this.httpBaseService.Post(this.university, ApiRouts.getUniversities).subscribe(x =>
     {
       console.log(x);
-      this.router.navigate(['universities'], {});
+      this.location.back();
     });
   }
   ngOnInit(): void {

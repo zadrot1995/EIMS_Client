@@ -1,0 +1,36 @@
+<div class="container">
+  <div *ngIf="!loading">
+
+    <div>
+      <h1>{{group.name}}</h1>
+    </div>
+    <div>
+      <span>{{group.about}}</span>
+    </div>
+    <div>
+      <h2>Curator:</h2>
+    </div>
+    <a routerLink="/teachers/overview/{{group.curator.id}}">
+    <div>
+      <span>{{group.curator.firstName}} {{group.curator.secondName}}</span>
+    </div>
+    </a>
+    <div>
+      <h2>Students</h2>
+    </div>
+    <div *ngFor="let student of group.students">
+      <a routerLink="/students/overview/{{student.id}}">
+        <div>
+          <h4>{{student.firstName}} {{student.secondName}}</h4>
+        </div>
+      </a>
+    </div>
+
+  </div>
+  <div class="row" *ngIf="loading">
+    <div class="col-12 center">
+      <app-preloader></app-preloader>
+    </div>
+
+  </div>
+</div>
