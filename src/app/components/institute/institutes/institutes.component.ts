@@ -26,4 +26,14 @@ export class InstitutesComponent implements OnInit {
       });
   }
 
+  deleteInstitute(InstituteId){
+    this.httpBaseService.Delete(ApiRouts.getInstitutes + "/" + InstituteId)
+      .subscribe(x =>
+      {
+        console.log(x);
+        window.location.reload();
+
+      });
+  }
+
 }

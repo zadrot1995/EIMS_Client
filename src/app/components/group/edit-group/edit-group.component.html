@@ -1,0 +1,53 @@
+<div class="container">
+  <div *ngIf="!loading && availableTeachers.length !== 0">
+    <div class="row">
+      <div class="input-field col s6">
+        <input [(ngModel)]="group.name" id="first_name" type="text" class="validate" name="name">
+        <label for="first_name">Name</label>
+      </div>
+    </div>
+
+    <select [(ngModel)]="group.curatorId" *ngFor="let teacher of availableTeachers" class="universitySelect" id="universities" name="universities">
+      <option value="{{teacher.id}}">{{teacher.firstName}} {{teacher.secondName}}</option>
+    </select>
+
+    <div>
+      <h2>Students</h2>
+    </div>
+    <div *ngFor="let student of group.students">
+      <a routerLink="/students/edit/{{student.id}}">
+        <div class="row">
+          <div class="col-6">
+            <h4>{{student.firstName}} {{student.secondName}}</h4>
+          </div>
+          <div class="col-3">
+            <button>
+              Edit
+            </button>
+          </div>
+          <div class="col-3">
+            <button>
+              Delete
+            </button>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div>
+      <a routerLink="/teachers/add/{{group.id}}">Add</a>
+    </div>
+
+    <div class="row">
+      <button (click)="editUniversity()">
+        Add
+      </button>
+    </div>
+  </div>
+  <div class="row" *ngIf="loading">
+    <div class="col-12 center">
+      <app-preloader></app-preloader>
+    </div>
+
+  </div>
+
+</div>

@@ -28,11 +28,12 @@ export class TeachersComponent implements OnInit {
       });
   }
 
-  deleteUniversity(universityId){
-    this.httpBaseService.Delete(ApiRouts.getUniversities + "/" + universityId)
+  deleteTeacher(teacherId){
+    this.httpBaseService.Delete(ApiRouts.teachers + "/" + teacherId)
       .subscribe(x =>
       {
         console.log(x);
+        window.location.reload();
       });
   }
 

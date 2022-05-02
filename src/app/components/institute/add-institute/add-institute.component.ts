@@ -31,7 +31,7 @@ export class AddInstituteComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    let universityId = Guid.parse(this.route.snapshot.paramMap.get('universityId'));
+    let universityId = Guid.parse(this.route.snapshot.paramMap.get('universityId')).toString();
     this.institute.universityId = universityId;
     this.httpBaseService.Get(ApiRouts.getUniversities)
       .subscribe(x =>

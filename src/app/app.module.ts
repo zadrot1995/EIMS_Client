@@ -27,6 +27,7 @@ import { InstituteOverviewComponent } from './components/institute/institute-ove
 import { TeacherOverviewComponent } from './components/teachers/teacher-overview/teacher-overview.component';
 import { EditTeacherComponent } from './components/teachers/edit-teacher/edit-teacher.component';
 import { GroupOverviewComponent } from './components/group/group-overview/group-overview.component';
+import { EditGroupComponent } from './components/group/edit-group/edit-group.component';
 
 const routes: Routes = [
   {
@@ -91,6 +92,10 @@ const routes: Routes = [
     component: AddGroupComponent,
   },
   {
+    path: 'groups/edit/:groupId',
+    component: EditGroupComponent,
+  },
+  {
     path: 'groups/overview/:groupId',
     component: GroupOverviewComponent,
   },
@@ -126,7 +131,8 @@ const routes: Routes = [
     InstituteOverviewComponent,
     TeacherOverviewComponent,
     EditTeacherComponent,
-    GroupOverviewComponent
+    GroupOverviewComponent,
+    EditGroupComponent
   ],
     imports: [
         BrowserModule,
