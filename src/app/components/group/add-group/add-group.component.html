@@ -1,5 +1,7 @@
 <input [(ngModel)]="group.name" placeholder="Name" type="text" class="textInput validate" name="firstName">
-<input [(ngModel)]="group.about" placeholder="About" type="text" class="textInput validate" name="secondName">
+<select [(ngModel)]="group.curatorId" *ngFor="let teacher of availableTeachers" class="universitySelect" id="universities" name="universities">
+  <option value="{{teacher.id}}">{{teacher.firstName}} {{teacher.secondName}}</option>
+</select>
 <button (click)="addGroup()">
   Add
 </button>

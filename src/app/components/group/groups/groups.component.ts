@@ -28,11 +28,12 @@ export class GroupsComponent implements OnInit {
       });
   }
 
-  deleteUniversity(universityId){
-    this.httpBaseService.Delete(ApiRouts.getUniversities + "/" + universityId)
+  deleteGroup(groupId){
+    this.httpBaseService.Delete(ApiRouts.groups + "/" + groupId)
       .subscribe(x =>
       {
         console.log(x);
+        window.location.reload();
       });
   }
 }

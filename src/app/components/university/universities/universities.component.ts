@@ -45,6 +45,8 @@ export class UniversitiesComponent implements OnInit {
       .subscribe(x =>
       {
         console.log(x);
+        window.location.reload();
+
       });
   }
 }

@@ -43,6 +43,32 @@
       <a routerLink="/teachers/add/{{institute.id}}">Add</a>
     </div>
 
+    <div>
+      <h2>Groups</h2>
+    </div>
+    <div *ngFor="let group of institute.groups">
+      <a routerLink="/groups/edit/{{group.id}}">
+        <div class="row">
+          <div class="col-6">
+            <h4>{{group.name}}</h4>
+          </div>
+          <div class="col-3">
+            <button>
+              Edit
+            </button>
+          </div>
+          <div class="col-3">
+            <button>
+              Delete
+            </button>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div>
+      <a routerLink="/groups/add/{{institute.id}}">Add</a>
+    </div>
+
   <div *ngIf="!loading" class="row">
     <div class="col-3" *ngFor="let image of institute.imageContents">
       <div>

@@ -87,7 +87,7 @@ const routes: Routes = [
     component: GroupsComponent,
   },
   {
-    path: 'groups/add',
+    path: 'groups/add/:instituteId',
     component: AddGroupComponent,
   },
   {
