@@ -30,6 +30,7 @@ import { GroupOverviewComponent } from './components/group/group-overview/group-
 import { EditGroupComponent } from './components/group/edit-group/edit-group.component';
 import { EditStudentComponent } from './components/student/edit-student/edit-student.component';
 import { StudentOverviewComponent } from './components/student/student-overview/student-overview.component';
+import { AddSubjectComponent } from './components/subject/add-subject/add-subject.component';
 
 const routes: Routes = [
   {
@@ -144,7 +145,8 @@ const routes: Routes = [
     GroupOverviewComponent,
     EditGroupComponent,
     EditStudentComponent,
-    StudentOverviewComponent
+    StudentOverviewComponent,
+    AddSubjectComponent
   ],
     imports: [
         BrowserModule,

@@ -1,4 +1,5 @@
 import {Guid} from "guid-typescript";
+import {Institute} from "./Institute";
 
 export class Teacher {
   id: Guid;
@@ -8,4 +9,6 @@ export class Teacher {
   degree: string;
   education: string;
   about: string;
+  institute: Institute;
+  instituteId: Guid;
 }

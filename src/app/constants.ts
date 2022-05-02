@@ -6,5 +6,6 @@ export const enum ApiRouts {
   addUniversityImage = "https://localhost:44304/api/universities/image",
   teachers = "https://localhost:44304/api/teachers",
   groups = "https://localhost:44304/api/groups",
-  students = "https://localhost:44304/api/students"
+  students = "https://localhost:44304/api/students",
+  subjects = "https://localhost:44304/api/subjects"
 }
