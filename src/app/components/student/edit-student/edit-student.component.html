@@ -1,0 +1,27 @@
+<div class="container">
+  <div *ngIf="!loading">
+    <div class="row">
+      <div class="input-field col s6">
+        <input [(ngModel)]="student.firstName" id="first_name" type="text" class="validate" name="firstName">
+        <label for="first_name">First Name</label>
+      </div>
+      <div class="input-field col s6">
+        <input [(ngModel)]="student.secondName" id="second_name" type="text" class="validate" name="secondName">
+        <label for="first_name">First Name</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <button (click)="editStudent()">
+        Edit
+      </button>
+    </div>
+  </div>
+  <div class="row" *ngIf="loading">
+    <div class="col-12 center">
+      <app-preloader></app-preloader>
+    </div>
+
+  </div>
+
+</div>

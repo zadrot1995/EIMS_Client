@@ -5,5 +5,5 @@ export class Student {
   firstName: string;
   secondName: string;
   userType: string;
-
+  groupId: Guid;
 }

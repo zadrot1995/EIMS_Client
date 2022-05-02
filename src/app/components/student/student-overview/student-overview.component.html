@@ -1,0 +1,14 @@
+<div class="container">
+  <div *ngIf="!loading">
+
+    <div>
+      <h1>{{student.firstName}} {{student.secondName}}</h1>
+    </div>
+  </div>
+  <div class="row" *ngIf="loading">
+    <div class="col-12 center">
+      <app-preloader></app-preloader>
+    </div>
+
+  </div>
+</div>

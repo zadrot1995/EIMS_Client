@@ -28,6 +28,8 @@ import { TeacherOverviewComponent } from './components/teachers/teacher-overview
 import { EditTeacherComponent } from './components/teachers/edit-teacher/edit-teacher.component';
 import { GroupOverviewComponent } from './components/group/group-overview/group-overview.component';
 import { EditGroupComponent } from './components/group/edit-group/edit-group.component';
+import { EditStudentComponent } from './components/student/edit-student/edit-student.component';
+import { StudentOverviewComponent } from './components/student/student-overview/student-overview.component';
 
 const routes: Routes = [
   {
@@ -104,8 +106,16 @@ const routes: Routes = [
     component: StudentsComponent,
   },
   {
-    path: 'students/add',
+    path: 'students/add/:groupId',
     component: AddStudentsComponent,
+  },
+  {
+    path: 'students/edit/:studentId',
+    component: EditStudentComponent,
+  },
+  {
+    path: 'students/overview/:studentId',
+    component: StudentOverviewComponent,
   },
 ];
 
@@ -132,7 +142,9 @@ const routes: Routes = [
     TeacherOverviewComponent,
     EditTeacherComponent,
     GroupOverviewComponent,
-    EditGroupComponent
+    EditGroupComponent,
+    EditStudentComponent,
+    StudentOverviewComponent
   ],
     imports: [
         BrowserModule,

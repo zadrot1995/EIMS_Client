@@ -47,8 +47,14 @@ export class EditGroupComponent implements OnInit {
       });
   }
 
-  editUniversity() {
+  editGroup() {
+    this.loading = true;
 
+    this.httpBaseService.Put(this.group, ApiRouts.groups + "/" + this.group.id).subscribe(x =>
+    {
+      console.log(x);
+      this.location.back();
+    });
   }
 
 }

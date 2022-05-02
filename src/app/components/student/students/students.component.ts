@@ -29,7 +29,7 @@ export class StudentsComponent implements OnInit {
       });
   }
 
-  deleteUniversity(studentId){
+  deleteStudent(studentId){
     this.httpBaseService.Delete(ApiRouts.students + "/" + studentId)
       .subscribe(x =>
       {
