@@ -1,1 +1,12 @@
-<p>add-subject works!</p>
+
+<input [(ngModel)]="subject.name" placeholder="Name" type="text" class="textInput validate" name="name">
+<select [(ngModel)]="subject.lecturerId" *ngFor="let teacher of availableTeachers" class="universitySelect" id="universities" name="universities">
+  <option value="{{teacher.id}}">{{teacher.firstName}} {{teacher.secondName}}</option>
+</select>
+<select [(ngModel)]="subject.practitionerId" *ngFor="let teacher of availableTeachers" class="universitySelect" id="universities" name="universities">
+  <option value="{{teacher.id}}">{{teacher.firstName}} {{teacher.secondName}}</option>
+</select>
+
+<button (click)="addSubject()">
+  Add
+</button>

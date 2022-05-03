@@ -6,7 +6,9 @@ export class Subject {
   id: Guid;
   name: string;
   lecturer: Teacher;
+  lecturerId: string;
   practitioner: Teacher;
+  practitionerId: string;
   groups: Group[];
-  instituteId: Guid;
+  instituteId: string;
 }

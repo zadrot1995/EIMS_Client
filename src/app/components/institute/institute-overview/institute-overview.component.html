@@ -27,6 +27,16 @@
       </div>
       </a>
     </div>
+    <div>
+      <h2>Subjects</h2>
+    </div>
+    <div *ngFor="let subject of institute.subjects">
+      <a routerLink="/subjects/overview/{{subject.id}}">
+        <div>
+          <h4>{{subject.name}}</h4>
+        </div>
+      </a>
+    </div>
     <div *ngIf="!loading" class="row">
       <div class="col-3" *ngFor="let image of institute.imageContents">
         <div>

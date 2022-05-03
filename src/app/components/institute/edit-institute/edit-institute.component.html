@@ -44,6 +44,32 @@
     </div>
 
     <div>
+      <h2>Subjects</h2>
+    </div>
+    <div *ngFor="let subject of institute.subjects">
+      <a routerLink="/subjects/edit/{{subject.id}}">
+        <div class="row">
+          <div class="col-6">
+            <h4>{{subject.name}}</h4>
+          </div>
+          <div class="col-3">
+            <button>
+              Edit
+            </button>
+          </div>
+          <div class="col-3">
+            <button>
+              Delete
+            </button>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div>
+      <a routerLink="/subjects/add/{{institute.id}}">Add</a>
+    </div>
+
+    <div>
       <h2>Groups</h2>
     </div>
     <div *ngFor="let group of institute.groups">
@@ -69,7 +95,8 @@
       <a routerLink="/groups/add/{{institute.id}}">Add</a>
     </div>
 
-  <div *ngIf="!loading" class="row">
+
+    <div *ngIf="!loading" class="row">
     <div class="col-3" *ngFor="let image of institute.imageContents">
       <div>
         <img style="margin-top: 20px" class="universityIcon" src="https://localhost:44304/api/universities/image/{{image.imageName}}">
