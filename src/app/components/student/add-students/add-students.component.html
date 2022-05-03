@@ -1,7 +1,40 @@
+<div>
+  <p>
+    <label>
+      <input [(ngModel)]="isManualAdding" type="checkbox" class="filled-in" checked="checked" />
+      <span>Add student manual</span>
+    </label>
+  </p>
+</div>
+<div *ngIf="isManualAdding">
+
 <input [(ngModel)]="student.firstName" placeholder="First Name" type="text" class="textInput validate" name="firstName">
 <input [(ngModel)]="student.secondName" placeholder="Second Name" type="text" class="textInput validate" name="secondName">
-
 
 <button (click)="addTeacher()">
   Add
 </button>
+</div>
+<div *ngIf="!isManualAdding">
+  <form action="#">
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>File</span>
+        <input type="file" (change)="onFileChange($event)" multiple="false">
+      </div>
+      <div class="file-path-wrapper">
+        <input data-mode="drop" class="file-path validate" type="text" placeholder="Upload one or more files">
+      </div>
+    </div>
+  </form>
+  <table class="sjs-table">
+    <tbody>
+    <tr *ngFor="let row of data">
+      <td *ngFor="let val of row">
+        {{val}}
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <button (click)="export()">Export!</button>
+</div>
