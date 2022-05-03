@@ -33,6 +33,7 @@ import { StudentOverviewComponent } from './components/student/student-overview/
 import { AddSubjectComponent } from './components/subject/add-subject/add-subject.component';
 import { SubjectsComponent } from './components/subject/subjects/subjects.component';
 import { EditSubjectComponent } from './components/subject/edit-subject/edit-subject.component';
+import { SubjectOverviewComponent } from './components/subject/subject-overview/subject-overview.component';
 
 const routes: Routes = [
   {
@@ -132,6 +133,10 @@ const routes: Routes = [
     path: 'subjects/edit/:subjectId',
     component: EditSubjectComponent,
   },
+  {
+    path: 'subjects/overview/:subjectId',
+    component: SubjectOverviewComponent,
+  },
 ];
 
 @NgModule({
@@ -162,7 +167,8 @@ const routes: Routes = [
     StudentOverviewComponent,
     AddSubjectComponent,
     SubjectsComponent,
-    EditSubjectComponent
+    EditSubjectComponent,
+    SubjectOverviewComponent
   ],
     imports: [
         BrowserModule,
