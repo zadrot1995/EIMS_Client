@@ -36,7 +36,7 @@ export class EditSubjectComponent implements OnInit {
     this.subject.id = Guid.parse(this.route.snapshot.paramMap.get('subjectId')).toString();
     this.httpBaseService.Get(ApiRouts.subjects + '/' + this.subject.id)
       .subscribe(x => {
-        this.subject = x as Group;
+        this.subject = x as Subject;
         console.log(x);
         this.httpBaseService.Get(ApiRouts.getInstitutes + '/teachers/' + this.subject.instituteId)
           .subscribe(y => {
