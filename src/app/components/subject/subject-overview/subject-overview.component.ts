@@ -6,6 +6,7 @@ import {HttpClient} from "@angular/common/http";
 import {Guid} from "guid-typescript";
 import {ApiRouts} from "../../../constants";
 import {Subject} from "../../../Models/Subject";
+import {Mark} from "../../../Models/Mark";
 
 @Component({
   selector: 'app-subject-overview',
@@ -19,7 +20,7 @@ export class SubjectOverviewComponent implements OnInit {
   subject = new Subject();
   result: object;
   loading = true;
-
+  marks: Mark[];
 
   constructor(public httpBaseService: HttpBaseService,
               private router: Router,
