@@ -7,6 +7,7 @@ import {Guid} from "guid-typescript";
 import {ApiRouts} from "../../../constants";
 import {Subject} from "../../../Models/Subject";
 import {Mark} from "../../../Models/Mark";
+import {Journal} from "../../../Models/Journal";
 
 @Component({
   selector: 'app-subject-overview',
