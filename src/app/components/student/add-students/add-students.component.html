@@ -11,7 +11,7 @@
 <input [(ngModel)]="student.firstName" placeholder="First Name" type="text" class="textInput validate" name="firstName">
 <input [(ngModel)]="student.secondName" placeholder="Second Name" type="text" class="textInput validate" name="secondName">
 
-<button (click)="addTeacher()">
+<button (click)="addStudent()">
   Add
 </button>
 </div>
@@ -36,5 +36,5 @@
     </tr>
     </tbody>
   </table>
-  <button (click)="export()">Export!</button>
+  <button (click)="addStudentsByExcelFile()">Add</button>
 </div>

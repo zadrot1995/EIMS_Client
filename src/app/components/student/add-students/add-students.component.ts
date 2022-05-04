@@ -8,6 +8,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ApiRouts} from "../../../constants";
 import {Student} from "../../../Models/Student";
 import {Guid} from "guid-typescript";
+import {StudentExcelDto} from "../../../Models/StudentExcelDto";
 const { read, write, utils } = XLSX;
 type AOA = any[][];
 
@@ -24,13 +25,14 @@ export class AddStudentsComponent {
   isManualAdding = true;
   selectedFile = null;
   student = new Student();
+  students: StudentExcelDto[];
   result: object;
   constructor(public httpBaseService: HttpBaseService,
               private router: Router,
               private route: ActivatedRoute,
               private studentsService: StudentsService) {}
 
-  addTeacher(){
+  addStudent(){
     this.httpBaseService.Post(this.student, ApiRouts.students).subscribe(x =>
     {
       console.log(x);
@@ -58,11 +60,17 @@ export class AddStudentsComponent {
 
       /* save data */
       this.data = <AOA>(XLSX.utils.sheet_to_json(ws, { header: 1 }));
-      let students: Student[];
-      students = this.studentsService.XlsxToStudents(this.data);
-      console.log(students);
+      this.students = this.studentsService.XlsxToStudents(this.data);
+      console.log(this.students);
     };
     reader.readAsBinaryString(target.files[0]);
+  }
+  addStudentsByExcelFile(){
+    this.httpBaseService.Post(this.students, ApiRouts.students + "/upload-student-by-excel-file").subscribe(x =>
+    {
+      console.log(x);
+      this.router.navigate(['students'], {});
+    });
   }
   export(): void {
     /* generate worksheet */
@@ -75,4 +83,5 @@ export class AddStudentsComponent {
     /* save to file */
     XLSX.writeFile(wb, this.fileName);
   }
+
 }
