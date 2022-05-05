@@ -34,6 +34,7 @@ import { AddSubjectComponent } from './components/subject/add-subject/add-subjec
 import { SubjectsComponent } from './components/subject/subjects/subjects.component';
 import { EditSubjectComponent } from './components/subject/edit-subject/edit-subject.component';
 import { SubjectOverviewComponent } from './components/subject/subject-overview/subject-overview.component';
+import { SubjectJournalComponent } from './components/subject/subject-journal/subject-journal.component';
 
 const routes: Routes = [
   {
@@ -137,6 +138,10 @@ const routes: Routes = [
     path: 'subjects/overview/:subjectId',
     component: SubjectOverviewComponent,
   },
+  {
+    path: 'marks/journal/:subjectId/:groupId',
+    component: SubjectJournalComponent,
+  },
 ];
 
 @NgModule({
@@ -168,7 +173,8 @@ const routes: Routes = [
     AddSubjectComponent,
     SubjectsComponent,
     EditSubjectComponent,
-    SubjectOverviewComponent
+    SubjectOverviewComponent,
+    SubjectJournalComponent
   ],
     imports: [
         BrowserModule,

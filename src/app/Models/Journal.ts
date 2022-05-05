@@ -12,4 +12,10 @@ export class Journal {
 export class JournalRow {
   student: Student;
   marks: Mark[];
+  practicMarks: Mark[];
+  examMark: Mark;
+  firstModularTestWorkMark: Mark;
+  secondModularTestWorkMark: Mark;
+  total: number;
+
 }

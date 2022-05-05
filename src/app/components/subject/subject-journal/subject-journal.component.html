@@ -1,0 +1,36 @@
+<div>
+  <div *ngIf="!loading">
+    <div>
+      <h1>{{journal.group.name}}</h1>
+    </div>
+    <div>
+      <table class="journalTable">
+        <tr>
+          <th>
+            Student
+          </th>
+          <th colspan="2">Practic</th>
+          <th>MKR1</th>
+          <th>MKR2</th>
+          <th>Exam</th>
+          <th>Total</th>
+
+        </tr>
+        <tr *ngFor="let row of journal.journalRows">
+          <td>{{row.student.firstName}} {{row.student.secondName}}</td>
+          <td *ngFor="let practic of row.practicMarks">{{practic.value}}</td>
+          <td>{{row.firstModularTestWorkMark}}</td>
+          <td>{{row.secondModularTestWorkMark}}</td>
+          <td>{{row.examMark}}</td>
+          <td>{{row.total}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row" *ngIf="loading">
+    <div class="col-12 center">
+      <app-preloader></app-preloader>
+    </div>
+
+  </div>
+</div>
