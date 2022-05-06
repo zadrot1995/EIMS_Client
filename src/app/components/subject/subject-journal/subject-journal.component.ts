@@ -105,6 +105,25 @@ export class SubjectJournalComponent implements OnInit {
     });
   }
 
+  openDialogEditMark(mark: Mark): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: mark,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      mark = result;
+      if (mark !== undefined){
+        console.log(mark);
+        this.httpBaseService.Put(mark, ApiRouts.marks + "/" + mark.id).subscribe(x =>
+        {
+          window.location.reload();
+        });
+      }
+    });
+  }
+
 }
 
 

@@ -18,11 +18,11 @@
         </tr>
         <tr *ngFor="let row of journal.journalRows">
           <td><a routerLink="/students/overview/{{row.student.id}}">{{row.student.firstName}} {{row.student.secondName}}</a></td>
-          <td *ngFor="let practic of row.practicMarks">{{practic.value === 0 ? '' : practic.value}}</td>
+          <td (click)="openDialogEditMark(practic)" *ngFor="let practic of row.practicMarks">{{practic.value === 0 ? '' : practic.value}}</td>
 
-          <td>{{row.firstModularTestWorkMark === null ? '' : row.firstModularTestWorkMark.value}}</td>
-          <td>{{row.secondModularTestWorkMark === null? '' : row.secondModularTestWorkMark.value}}</td>
-          <td>{{row.examMark}}</td>
+          <td (click)="openDialogEditMark(row.firstModularTestWorkMark)">{{row.firstModularTestWorkMark === null ? '' : row.firstModularTestWorkMark.value}}</td>
+          <td (click)="openDialogEditMark(row.secondModularTestWorkMark)">{{row.secondModularTestWorkMark === null? '' : row.secondModularTestWorkMark.value}}</td>
+          <td (click)="openDialogEditMark(row.examMark)">{{row.examMark}}</td>
           <td>{{row.total}}</td>
           <button mat-raised-button (click)="openDialog(row.student)">Pick one</button>
         </tr>
