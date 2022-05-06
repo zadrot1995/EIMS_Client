@@ -18,5 +18,6 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Close</button>
+  <button *ngIf="data.id !== undefined" mat-button (click)="deleteMark(data.id)">Delete</button>
   <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Add</button>
 </div>

@@ -12,7 +12,10 @@ import {Journal} from "../../../Models/Journal";
 import {Mark} from "../../../Models/Mark";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Student} from "../../../Models/Student";
-
+import * as XLSX from 'xlsx';
+import {JournalService} from "../../../services/journal.service";
+const { read, write, utils } = XLSX;
+type AOA = any[][];
 
 export interface DialogData {
   animal: string;
@@ -36,17 +39,17 @@ export class SubjectJournalComponent implements OnInit {
   practicColCount = 0;
   availableTeachers: Teacher[];
   availableGroups: Group[];
-  animal: string;
-  name: string;
-
-
+  data: AOA;
+  wopts: XLSX.WritingOptions = { bookType: 'xlsx', type: 'array' };
+  fileName: string = 'SheetJS.xlsx';
 
   constructor(public httpBaseService: HttpBaseService,
               private router: Router,
               private route: ActivatedRoute,
               private http: HttpClient,
               private location: Location,
-              public dialog: MatDialog
+              public dialog: MatDialog,
+              public journalService: JournalService
   ) {
   }
 
@@ -113,15 +116,49 @@ export class SubjectJournalComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      mark = result;
-      if (mark !== undefined){
-        console.log(mark);
-        this.httpBaseService.Put(mark, ApiRouts.marks + "/" + mark.id).subscribe(x =>
+      if (result !== undefined){
+        console.log(result);
+        this.httpBaseService.Put(result, ApiRouts.marks + "/" + mark.id).subscribe(x =>
         {
           window.location.reload();
         });
       }
     });
+  }
+
+
+  onFileChange(evt: any) {
+    /* wire up file reader */
+    const target: DataTransfer = <DataTransfer>(evt.target);
+    if (target.files.length !== 1) throw new Error('Cannot use multiple files');
+    const reader: FileReader = new FileReader();
+    reader.onload = (e: any) => {
+      /* read workbook */
+      const bstr: string = e.target.result;
+      const wb: XLSX.WorkBook = XLSX.read(bstr, { type: 'binary' });
+
+      /* grab first sheet */
+      const wsname: string = wb.SheetNames[0];
+      const ws: XLSX.WorkSheet = wb.Sheets[wsname];
+
+      /* save data */
+      this.data = <AOA>(XLSX.utils.sheet_to_json(ws, { header: 1 }));
+      this.journalService.XlsxToJournal(this.data);
+    };
+    reader.readAsBinaryString(target.files[0]);
+  }
+
+  export(): void {
+    /* generate worksheet */
+    debugger;
+    const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet({name: "aaaa", animal: "AAAAA"});
+
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, this.fileName);
   }
 
 }
@@ -136,9 +173,19 @@ export class DialogOverviewExampleDialog {
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: Mark,
-  ) {}
+    public httpBaseService: HttpBaseService,
+) {}
 
   onNoClick(): void {
+    console.log(this.data);
     this.dialogRef.close();
+  }
+  deleteMark(markId){
+
+    this.httpBaseService.Delete(ApiRouts.marks + "/" + markId)
+      .subscribe(x =>
+      {
+        this.dialogRef.close();
+      });
   }
 }
