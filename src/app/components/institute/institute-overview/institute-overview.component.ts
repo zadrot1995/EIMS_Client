@@ -6,6 +6,8 @@ import {HttpClient} from "@angular/common/http";
 import {Guid} from "guid-typescript";
 import {ApiRouts} from "../../../constants";
 import {Institute} from "../../../Models/Institute";
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 @Component({
   selector: 'app-institute-overview',
@@ -18,6 +20,8 @@ export class InstituteOverviewComponent implements OnInit {
   institute = new Institute();
   result: object;
   loading = true;
+  panelOpenState = false;
+
 
 
   constructor(public httpBaseService: HttpBaseService,

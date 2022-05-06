@@ -34,6 +34,8 @@ import { AddSubjectComponent } from './components/subject/add-subject/add-subjec
 import { SubjectsComponent } from './components/subject/subjects/subjects.component';
 import { EditSubjectComponent } from './components/subject/edit-subject/edit-subject.component';
 import { SubjectOverviewComponent } from './components/subject/subject-overview/subject-overview.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 import {
   DialogOverviewExampleDialog,
   SubjectJournalComponent
@@ -190,6 +192,7 @@ const routes: Routes = [
         MatListModule,
         MatIconModule,
         MatDialogModule,
+        MatExpansionModule
     ],
   providers: [],
   bootstrap: [AppComponent]

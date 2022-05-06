@@ -100,3 +100,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-color: #fff176;
   color: black;
 }
+
+.logoIcon {
+  height: 50px;
+  width: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+  /* Other styles here */
+}

@@ -30,7 +30,20 @@
     <div>
       <h2>Subjects</h2>
     </div>
-    <div *ngFor="let subject of institute.subjects">
+    <div >
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Subjects
+            </mat-panel-title>
+            <mat-panel-description>
+              All subject that institute include...
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div *ngFor="let subject of institute.subjects">
       <a routerLink="/subjects/overview/{{subject.id}}">
         <div>
           <h4>{{subject.name}}</h4>
@@ -43,6 +56,11 @@
           <img style="margin-top: 20px" class="universityIcon" src="https://localhost:44304/api/universities/image/{{image.imageName}}">
         </div>
       </div>
+    </div>
+        </mat-expansion-panel>
+
+      </mat-accordion>
+
     </div>
   </div>
   <div class="row" *ngIf="loading">
