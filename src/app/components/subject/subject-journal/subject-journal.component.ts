@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Subject} from "../../../Models/Subject";
 import {Teacher} from "../../../Models/Teacher";
 import {Group} from "../../../Models/Group";
@@ -9,6 +9,16 @@ import {Location} from "@angular/common";
 import {Guid} from "guid-typescript";
 import {ApiRouts} from "../../../constants";
 import {Journal} from "../../../Models/Journal";
+import {Mark} from "../../../Models/Mark";
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {Student} from "../../../Models/Student";
+
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
+
 
 @Component({
   selector: 'app-subject-journal',
@@ -20,12 +30,14 @@ export class SubjectJournalComponent implements OnInit {
   selectedFile = null;
   journal = new Journal();
   subjectId: string;
-  groupId: string
+  groupId: string;
   result: object;
   loading = true;
   practicColCount = 0;
   availableTeachers: Teacher[];
   availableGroups: Group[];
+  animal: string;
+  name: string;
 
 
 
@@ -33,7 +45,8 @@ export class SubjectJournalComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private http: HttpClient,
-              private location: Location
+              private location: Location,
+              public dialog: MatDialog
   ) {
   }
 
@@ -45,13 +58,22 @@ export class SubjectJournalComponent implements OnInit {
       .subscribe(x => {
         this.journal = x as Journal;
         console.log(x);
-        debugger;
         let lenghts = [];
         for (let y of this.journal.journalRows)
         {
           lenghts.push(y.practicMarks.length);
         }
+
         this.practicColCount = Math.max.apply(null, lenghts);
+        for (let y of this.journal.journalRows){
+          if(y.practicMarks.length < this.practicColCount){
+            for (let i = y.practicMarks.length; i < this.practicColCount; i++){
+              let mark = new Mark();
+              mark.value = 0;
+              y.practicMarks.push(mark);
+            }
+          }
+        }
         console.log("PracticColCount: " + this.practicColCount);
         this.loading = false;
       });
@@ -59,12 +81,45 @@ export class SubjectJournalComponent implements OnInit {
 
   editSubject() {
     this.loading = true;
+  }
 
-    this.httpBaseService.Put(this.subject, ApiRouts.subjects + "/" + this.subject.id).subscribe(x =>
-    {
-      console.log(x);
-      this.location.back();
+  openDialog(student: Student): void {
+    let mark = new Mark();
+    mark.studentId = student.id;
+    mark.subjectId = this.subjectId;
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: mark,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      mark = result;
+      if (mark !== undefined){
+        console.log(mark);
+        this.httpBaseService.Post(mark, ApiRouts.marks).subscribe(x =>
+        {
+          window.location.reload();
+        });
+      }
     });
   }
 
+}
+
+
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'dialog-overview-example-dialog.html',
+})
+export class DialogOverviewExampleDialog {
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: Mark,
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }

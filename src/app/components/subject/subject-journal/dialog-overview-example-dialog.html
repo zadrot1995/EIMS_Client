@@ -1,0 +1,22 @@
+<div mat-dialog-content>
+  <div class="row">
+    <diw class="col-12">
+      <select [(ngModel)]="data.markType" class="universitySelect" id="universities" name="universities">
+        <option value="Practice" >Practice</option>
+        <option value="FirstModularTestWork">MKR №1</option>
+        <option value="SecondModularTestWork">MKR №2</option>
+        <option value="Exam">Exam</option>
+
+      </select>
+    </diw>
+
+  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Mark</mat-label>
+    <input [(ngModel)]="data.value" placeholder="Mark" type="number" class="numberInput validate" name="mark">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Add</button>
+</div>

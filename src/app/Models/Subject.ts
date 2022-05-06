@@ -3,7 +3,7 @@ import {Teacher} from "./Teacher";
 import {Group} from "./Group";
 
 export class Subject {
-  id: Guid;
+  id: string;
   name: string;
   lecturer: Teacher;
   lecturerId: string;

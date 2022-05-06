@@ -9,7 +9,7 @@
           <th>
             Student
           </th>
-          <th colspan="2">Practic</th>
+          <th colspan="4">Practic</th>
           <th>MKR1</th>
           <th>MKR2</th>
           <th>Exam</th>
@@ -17,12 +17,14 @@
 
         </tr>
         <tr *ngFor="let row of journal.journalRows">
-          <td>{{row.student.firstName}} {{row.student.secondName}}</td>
-          <td *ngFor="let practic of row.practicMarks">{{practic.value}}</td>
-          <td>{{row.firstModularTestWorkMark}}</td>
-          <td>{{row.secondModularTestWorkMark}}</td>
+          <td><a routerLink="/students/overview/{{row.student.id}}">{{row.student.firstName}} {{row.student.secondName}}</a></td>
+          <td *ngFor="let practic of row.practicMarks">{{practic.value === 0 ? '' : practic.value}}</td>
+
+          <td>{{row.firstModularTestWorkMark === null ? '' : row.firstModularTestWorkMark.value}}</td>
+          <td>{{row.secondModularTestWorkMark === null? '' : row.secondModularTestWorkMark.value}}</td>
           <td>{{row.examMark}}</td>
           <td>{{row.total}}</td>
+          <button mat-raised-button (click)="openDialog(row.student)">Pick one</button>
         </tr>
       </table>
     </div>

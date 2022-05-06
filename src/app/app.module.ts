@@ -34,7 +34,11 @@ import { AddSubjectComponent } from './components/subject/add-subject/add-subjec
 import { SubjectsComponent } from './components/subject/subjects/subjects.component';
 import { EditSubjectComponent } from './components/subject/edit-subject/edit-subject.component';
 import { SubjectOverviewComponent } from './components/subject/subject-overview/subject-overview.component';
-import { SubjectJournalComponent } from './components/subject/subject-journal/subject-journal.component';
+import {
+  DialogOverviewExampleDialog,
+  SubjectJournalComponent
+} from './components/subject/subject-journal/subject-journal.component';
+import {MatDialogActions, MatDialogModule} from '@angular/material/dialog';
 
 const routes: Routes = [
   {
@@ -174,7 +178,8 @@ const routes: Routes = [
     SubjectsComponent,
     EditSubjectComponent,
     SubjectOverviewComponent,
-    SubjectJournalComponent
+    SubjectJournalComponent,
+    DialogOverviewExampleDialog
   ],
     imports: [
         BrowserModule,
@@ -184,6 +189,7 @@ const routes: Routes = [
         BrowserAnimationsModule,
         MatListModule,
         MatIconModule,
+        MatDialogModule,
     ],
   providers: [],
   bootstrap: [AppComponent]
