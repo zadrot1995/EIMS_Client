@@ -3,7 +3,7 @@
     <div *ngFor="let subject of subjects">
       <div class="row">
         <div class="col">
-          <a>
+          <a routerLink="/subjects/overview/{{subject.id}}">
             <div>
               <span>{{subject.name}}</span>
             </div>

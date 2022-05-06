@@ -32,7 +32,11 @@ body { margin: 0; font-family: sans-serif, "Helvetica Neue", sans-serif; }
   align-items: center;
   height: 100vh;
 }
-
+.journalTableCenter td, th
+{
+  text-align: center;
+  vertical-align: middle;
+}
 
 .border-button {
   border: solid 5px #b71c1c;

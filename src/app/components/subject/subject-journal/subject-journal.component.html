@@ -1,16 +1,14 @@
 <div class="container-fluid">
   <div *ngIf="!loading">
     <div>
-      <h1>{{journal.group.name}}</h1>
+      <h1> Journal of success {{journal.group.name}} on {{journal.subject.name}}</h1>
     </div>
     <div>
-
-      <span>File</span>
       <span>File</span>
       <input type="file" (change)="onFileChange($event)" multiple="false">
     </div>
     <div>
-      <table class="journalTable">
+      <table class="journalTable journalTableCenter">
         <tr>
           <th>
             Student
@@ -30,9 +28,20 @@
           <td (click)="openDialogEditMark(row.secondModularTestWorkMark)">{{row.secondModularTestWorkMark === null? '' : row.secondModularTestWorkMark.value}}</td>
           <td (click)="openDialogEditMark(row.examMark)">{{row.examMark === null ? '' : row.examMark.value}}</td>
           <td class="{{row.total < 21 ? 'criticalMark' : row.total < 50 ? 'waringMark' : ''}}">{{row.total}}</td>
-          <button mat-raised-button (click)="openDialog(row.student)">Pick one</button>
+          <div class="row" style="max-width: 60px">
+            <div class="col">
+          <button class="btn-floating btn-large waves-effect waves-light red darken-4" (click)="openDialog(row.student)">
+            <i class="material-icons">add</i>
+          </button>
+            </div>
+          </div>
+
         </tr>
       </table>
+    </div>
+    <div>
+      <h2>About {{journal.subject.name}}</h2>
+      <p>Computer science is the study of computers and computing as well as their theoretical and practical applications. Computer science applies the principles of mathematics, engineering, and logic to a plethora of functions, including algorithm formulation, software and hardware development, and artificial intelligence.</p>
     </div>
   </div>
   <div class="row" *ngIf="loading">

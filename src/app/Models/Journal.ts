@@ -6,6 +6,7 @@ import {Mark} from "./Mark";
 export class Journal {
   group: Group;
   journalRows: JournalRow[];
+  subject: Subject;
 }
 
 
@@ -17,5 +18,4 @@ export class JournalRow {
   firstModularTestWorkMark: Mark;
   secondModularTestWorkMark: Mark;
   total: number;
-
 }
