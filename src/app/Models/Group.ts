@@ -4,7 +4,7 @@ import {Teacher} from "./Teacher";
 import {Institute} from "./Institute";
 
 export class Group {
-  id: Guid;
+  id: string;
   name: string;
   students: Student[];
   curator: Teacher;
