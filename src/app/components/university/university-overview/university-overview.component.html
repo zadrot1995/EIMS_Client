@@ -1,29 +1,61 @@
 <div class="container">
+
   <div *ngIf="!loading">
 
-  <div>
-    <h1>{{university.name}}</h1>
-  </div>
-  <div>
+    <div class="row" style="margin-top: 30px">
+      <div class="col-12">
+        <div class="d-flex justify-content-center textStyledHeader" >
+          <h1 >{{university.name}}</h1>
+        </div>
+      </div>
+    </div>
+
+  <div class="row" style="margin-top: 30px">
+    <div class="col-12 textStyled">
     <span>{{university.about}}</span>
-  </div>
+    </div>
+  </div >
+    <div class="row" style="margin-top: 50px">
+      <div class="col-12">
+      <carousel cellsToShow="1" height="500">
+        <div class="carousel-cell" *ngFor="let image of university.imageContents">
+          <img src="https://localhost:44304/api/universities/image/{{image.imageName}}">
+        </div>
+      </carousel>
+      </div>
+    </div>
   <div>
     <h2>Institutes</h2>
   </div>
-  <div *ngFor="let institute of university.institutes">
-    <div>
-      <a routerLink="/institutes/overview/{{institute.id}}">
-      <h4>{{institute.name}}</h4>
-      </a>
-    </div>
-  </div>
-  <div *ngIf="!loading" class="row">
-    <div class="col-3" *ngFor="let image of university.imageContents">
-      <div>
-        <img style="margin-top: 20px" class="universityIcon" src="https://localhost:44304/api/universities/image/{{image.imageName}}">
+    <div class="row" *ngIf="university.imageContents !== null && university.imageContents.length !==0">
+      <div class="col-12">
+        <div >
+          <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Institutes
+                </mat-panel-title>
+                <mat-panel-description>
+                  All institutes that the university include...
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+
+              <div *ngFor="let institute of university.institutes">
+                <a routerLink="/institutes/overview/{{institute.id}}">
+                  <div>
+                    <h4>{{institute.name}}</h4>
+                  </div>
+                </a>
+              </div>
+            </mat-expansion-panel>
+
+          </mat-accordion>
+        </div>
       </div>
     </div>
-  </div>
+
   </div>
   <div class="row" *ngIf="loading">
     <div class="col-12 center">

@@ -41,6 +41,11 @@ import {
   SubjectJournalComponent
 } from './components/subject/subject-journal/subject-journal.component';
 import {MatDialogActions, MatDialogModule} from '@angular/material/dialog';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { NgbdCarouselBasicComponent } from './components/ngbd-carousel-basic/ngbd-carousel-basic.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CarouselModule, WavesModule } from 'angular-bootstrap-md';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
 
 const routes: Routes = [
   {
@@ -181,7 +186,9 @@ const routes: Routes = [
     EditSubjectComponent,
     SubjectOverviewComponent,
     SubjectJournalComponent,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    ContactUsComponent,
+    NgbdCarouselBasicComponent
   ],
     imports: [
         BrowserModule,
@@ -192,7 +199,9 @@ const routes: Routes = [
         MatListModule,
         MatIconModule,
         MatDialogModule,
-        MatExpansionModule
+        MatExpansionModule,
+        NgbModule,
+      IvyCarouselModule
     ],
   providers: [],
   bootstrap: [AppComponent]

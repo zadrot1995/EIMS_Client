@@ -6,6 +6,7 @@ import {HttpClient} from "@angular/common/http";
 import {Guid} from "guid-typescript";
 import {ApiRouts} from "../../../constants";
 
+
 @Component({
   selector: 'app-university-overview',
   templateUrl: './university-overview.component.html',
@@ -16,6 +17,7 @@ export class UniversityOverviewComponent implements OnInit {
   university = new University();
   result: object;
   loading = true;
+  panelOpenState = false;
 
 
   constructor(public httpBaseService: HttpBaseService,

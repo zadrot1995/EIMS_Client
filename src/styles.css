@@ -7,6 +7,10 @@ body { margin: 0; font-family: sans-serif, "Helvetica Neue", sans-serif; }
   max-height: 200px;
   max-width: 200px;
 }
+.addUniversityIcon{
+  max-height: 100px;
+  max-width: 100px;
+}
 .universityList{
   margin: 50px;
 }
@@ -108,4 +112,29 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin-right: 10px;
 
   /* Other styles here */
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.textStyledHeader h1{
+  color: #b71c1c;
+  font-family: "sans-serif";
+  font-size: 60px;
+}
+.textStyled span{
+  color: #b71c1c;
+  font-family: "sans-serif";
+  font-size: x-large;
+}
+.contact-us-card{
+  background-color: #b71c1c;
+}
+.contact-us-card form input[type="text"], textarea {
+  background-color : white;
 }

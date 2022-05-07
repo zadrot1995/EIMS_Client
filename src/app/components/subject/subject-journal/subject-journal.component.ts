@@ -149,16 +149,7 @@ export class SubjectJournalComponent implements OnInit {
   }
 
   export(): void {
-    /* generate worksheet */
-    debugger;
-    const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet({name: "aaaa", animal: "AAAAA"});
 
-    /* generate workbook and add the worksheet */
-    const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-
-    /* save to file */
-    XLSX.writeFile(wb, this.fileName);
   }
 
 }

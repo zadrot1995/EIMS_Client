@@ -1,5 +1,35 @@
-<input [(ngModel)]="university.name" placeholder="Name" type="text" class="textInput validate" name="name">
-<input [(ngModel)]="university.about" placeholder="About" type="text" class="textInput validate" name="about">
-<button (click)="addUniversity()">
-  Add
-</button>
+<div class="container">
+  <div class="row" style="margin-top: 30px">
+    <div class="col-12">
+      <div class="d-flex justify-content-center textStyledHeader" >
+        <h1 >Add new university</h1>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-center">
+        <img class="addUniversityIcon" src="assets/img/university3.png">
+      </div>
+    </div>
+  </div>
+  <div style="margin-left: 100px; margin-right: 100px">
+<div class="row">
+  <div class="col-12">
+    <input [(ngModel)]="university.name" placeholder="Name" type="text" class="textInput validate" name="name">
+  </div>
+</div>
+  <div class="row">
+    <div class="col-12">
+      <input [(ngModel)]="university.about" placeholder="About" type="text" class="textInput validate" name="about">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button class="waves-effect waves-light btn red darken-4"(click)="addUniversity()">
+        Add
+      </button>
+    </div>
+  </div>
+</div>
+</div>

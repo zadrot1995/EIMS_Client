@@ -1,7 +1,7 @@
 import {Guid} from "guid-typescript";
 
 export class Student {
-  id: Guid;
+  id: string;
   firstName: string;
   secondName: string;
   userType: string;

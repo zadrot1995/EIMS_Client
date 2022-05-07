@@ -30,7 +30,7 @@ export class EditStudentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.student.id = Guid.parse(this.route.snapshot.paramMap.get('studentId'));
+    this.student.id = Guid.parse(this.route.snapshot.paramMap.get('studentId')).toString();
 
     this.httpBaseService.Get(ApiRouts.students + '/' + this.student.id.toString())
       .subscribe(x => {
