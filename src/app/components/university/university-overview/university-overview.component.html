@@ -55,15 +55,25 @@
         </div>
       </div>
 
-      <div class="row" style="margin-top: 100px" *ngFor="let post of university.posts">
-        <div class="col-6 textStyled" >
+      <div class="row" style="margin-top: 100px" *ngFor="let post of university.posts;let i = index" [attr.data-index]="i">
+        <div class="col-6 textStyled" *ngIf="i % 2 == 0">
           <div class="post-title" >
             <h1><b>{{post.title}}</b></h1>
           </div>
           <span>{{post.text}}</span>
         </div>
-        <div class="col-6 d-flex justify-content-end">
+        <div class="col-6 d-flex justify-content-end" *ngIf="i % 2 == 0">
           <img class="post-image" src="https://localhost:44304/api/universities/image/{{post.imageLink}}">
+        </div>
+
+        <div class="col-6 d-flex justify-content-start" *ngIf="i % 2 !== 0">
+          <img class="post-image" src="https://localhost:44304/api/universities/image/{{post.imageLink}}">
+        </div>
+        <div class="col-6 textStyled justify-content-end" *ngIf="i % 2 !== 0">
+          <div class="post-title" >
+            <h1><b>{{post.title}}</b></h1>
+          </div>
+          <span>{{post.text}}</span>
         </div>
       </div>
     </div>

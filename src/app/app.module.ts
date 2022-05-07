@@ -47,6 +47,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselModule, WavesModule } from 'angular-bootstrap-md';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { AddUniversityPostComponent } from './components/posts/add-university-post/add-university-post.component';
+import {MatTableModule} from '@angular/material/table';
 
 const routes: Routes = [
   {
@@ -207,7 +208,8 @@ const routes: Routes = [
         MatDialogModule,
         MatExpansionModule,
         NgbModule,
-      IvyCarouselModule
+      IvyCarouselModule,
+      MatTableModule
     ],
   providers: [],
   bootstrap: [AppComponent]

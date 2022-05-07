@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="margin-bottom:100px;" >
   <div class="row" style="margin-top: 30px">
     <div class="col-12">
       <div class="d-flex justify-content-center textStyledHeader" >
@@ -21,7 +21,8 @@
 </div>
   <div class="row">
     <div class="col-12">
-      <input [(ngModel)]="university.about" placeholder="About" type="text" class="textInput validate" name="about">
+<!--      <input [(ngModel)]="university.about" placeholder="About" type="text" class="textInput validate" name="about">-->
+      <textarea [(ngModel)]="university.about" class="textInput" id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
     </div>
   </div>
   <div class="row">
