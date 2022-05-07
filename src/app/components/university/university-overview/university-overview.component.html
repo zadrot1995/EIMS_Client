@@ -54,6 +54,18 @@
           </mat-accordion>
         </div>
       </div>
+
+      <div class="row" style="margin-top: 100px" *ngFor="let post of university.posts">
+        <div class="col-6 textStyled" >
+          <div class="post-title" >
+            <h1><b>{{post.title}}</b></h1>
+          </div>
+          <span>{{post.text}}</span>
+        </div>
+        <div class="col-6 d-flex justify-content-end">
+          <img class="post-image" src="https://localhost:44304/api/universities/image/{{post.imageLink}}">
+        </div>
+      </div>
     </div>
 
   </div>

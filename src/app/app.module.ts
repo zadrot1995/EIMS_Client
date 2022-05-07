@@ -46,6 +46,7 @@ import { NgbdCarouselBasicComponent } from './components/ngbd-carousel-basic/ngb
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselModule, WavesModule } from 'angular-bootstrap-md';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { AddUniversityPostComponent } from './components/posts/add-university-post/add-university-post.component';
 
 const routes: Routes = [
   {
@@ -153,6 +154,10 @@ const routes: Routes = [
     path: 'marks/journal/:subjectId/:groupId',
     component: SubjectJournalComponent,
   },
+  {
+    path: 'posts/university/:universityId',
+    component: AddUniversityPostComponent,
+  },
 ];
 
 @NgModule({
@@ -188,7 +193,8 @@ const routes: Routes = [
     SubjectJournalComponent,
     DialogOverviewExampleDialog,
     ContactUsComponent,
-    NgbdCarouselBasicComponent
+    NgbdCarouselBasicComponent,
+    AddUniversityPostComponent
   ],
     imports: [
         BrowserModule,

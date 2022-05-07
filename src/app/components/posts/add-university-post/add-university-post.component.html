@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row" style="margin-top: 30px">
+    <div class="col-12">
+      <div class="d-flex justify-content-center textStyledHeader" >
+        <h1 >Add new university</h1>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-center">
+        <img class="addUniversityIcon" src="assets/img/university3.png">
+      </div>
+    </div>
+  </div>
+  <div style="margin-left: 100px; margin-right: 100px">
+    <div class="row">
+      <div class="col-12">
+        <input [(ngModel)]="post.title" placeholder="Title" type="text" class="textInput validate" name="name">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <input [(ngModel)]="post.text" placeholder="Text" type="text" class="textInput validate" name="about">
+      </div>
+    </div>
+    <div>
+      <input type="file" (change)="onFileSelected($event)">
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="waves-effect waves-light btn red darken-4"(click)="addPost()">
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

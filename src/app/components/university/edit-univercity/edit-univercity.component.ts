@@ -40,7 +40,6 @@ export class EditUnivercityComponent implements OnInit {
   }
 
   onFileSelected(event) {
-    debugger;
     this.selectedFile = event.target.files[0];
     let testData:FormData = new FormData();
     testData.append('file', this.selectedFile, this.selectedFile.name);

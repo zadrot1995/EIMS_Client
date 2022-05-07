@@ -127,6 +127,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-family: "sans-serif";
   font-size: 60px;
 }
+.post-title {
+  color: #b71c1c;
+  font-family: "sans-serif";
+}
 .textStyled span{
   color: #b71c1c;
   font-family: "sans-serif";
@@ -137,4 +141,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 .contact-us-card form input[type="text"], textarea {
   background-color : white;
+}
+
+.post-image{
+  width: 100%;
+  max-width: 400px;
+  height: auto;
 }

@@ -8,6 +8,8 @@ export const enum ApiRouts {
   groups = "https://localhost:44304/api/groups",
   students = "https://localhost:44304/api/students",
   subjects = "https://localhost:44304/api/subjects",
-  marks = "https://localhost:44304/api/marks"
+  marks = "https://localhost:44304/api/marks",
+  posts = "https://localhost:44304/api/posts"
+
 
 }
