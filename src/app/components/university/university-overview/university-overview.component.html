@@ -9,12 +9,6 @@
         </div>
       </div>
     </div>
-
-  <div class="row" style="margin-top: 30px">
-    <div class="col-12 textStyled">
-    <span>{{university.about}}</span>
-    </div>
-  </div >
     <div class="row" style="margin-top: 50px">
       <div class="col-12">
       <carousel cellsToShow="1" height="500">
@@ -24,6 +18,11 @@
       </carousel>
       </div>
     </div>
+    <div class="row" style="margin-top: 30px">
+      <div class="col-12 textStyled">
+        <span>{{university.about}}</span>
+      </div>
+    </div >
   <div>
     <h2>Institutes</h2>
   </div>
@@ -31,7 +30,7 @@
       <div class="col-12">
         <div >
           <mat-accordion>
-            <mat-expansion-panel (opened)="panelOpenState = true"
+            <mat-expansion-panel (opened)="panelOpenState = true; loadInstitute()"
                                  (closed)="panelOpenState = false">
               <mat-expansion-panel-header>
                 <mat-panel-title>
@@ -41,7 +40,7 @@
                   All institutes that the university include...
                 </mat-panel-description>
               </mat-expansion-panel-header>
-
+              <div *ngIf="isInstituteLoad">
               <div *ngFor="let institute of university.institutes">
                 <a class="institute-list" routerLink="/institutes/overview/{{institute.id}}">
                   <div class="row">
@@ -59,11 +58,16 @@
                   </div>
                     </div>
                     <div class="col-4 d-flex justify-content-center">
-                      <img src="assets/img/university3.png" class="universityIcon" >
+                      <img src="{{datahelper.getImageOrDefault(institute)}}" class="universityIcon" >
                     </div>
                   </div>
-
                 </a>
+              </div>
+             </div>
+              <div *ngIf="!isInstituteLoad">
+                <div class="col-12 center">
+                  <app-preloader></app-preloader>
+                </div>
               </div>
             </mat-expansion-panel>
 

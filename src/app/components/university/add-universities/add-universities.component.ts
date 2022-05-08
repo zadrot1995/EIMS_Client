@@ -15,6 +15,7 @@ export class AddUniversitiesComponent implements OnInit {
   selectedFile = null;
   university = new University();
   result: object;
+  isInstitutesLoad
   constructor(public httpBaseService: HttpBaseService,
               private router: Router,
               private location: Location) {}

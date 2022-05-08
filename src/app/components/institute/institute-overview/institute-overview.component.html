@@ -4,6 +4,15 @@
     <div>
       <h1>{{institute.name}}</h1>
     </div>
+    <div class="row" style="margin-top: 50px">
+      <div class="col-12">
+        <carousel cellsToShow="1" height="500">
+          <div class="carousel-cell" *ngFor="let image of institute.imageContents">
+            <img src="https://localhost:44304/api/universities/image/{{image.imageName}}">
+          </div>
+        </carousel>
+      </div>
+    </div>
     <div>
       <span>{{institute.about}}</span>
     </div>

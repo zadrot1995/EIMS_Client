@@ -14,12 +14,12 @@ export class DataFormatHelper {
       return str;
     }
   }
-  getImageOrDefault(university) {
-    if (university.imageContents.length === 0) {
+  getImageOrDefault(item) {
+    if (item.imageContents === null || item.imageContents === undefined || item.imageContents.length === 0) {
       return 'assets/img/university3.png';
     }
     else {
-      return 'https://localhost:44304/api/universities/image/' + university.imageContents[0].imageName;
+      return 'https://localhost:44304/api/universities/image/' + item.imageContents[0].imageName;
     }
   }
 }

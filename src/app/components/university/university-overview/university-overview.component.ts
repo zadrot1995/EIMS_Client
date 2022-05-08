@@ -6,6 +6,7 @@ import {HttpClient} from "@angular/common/http";
 import {Guid} from "guid-typescript";
 import {ApiRouts} from "../../../constants";
 import {DataFormatHelper} from "../../../services/DataFormatHelper";
+import {Institute} from "../../../Models/Institute";
 
 
 @Component({
@@ -19,8 +20,7 @@ export class UniversityOverviewComponent implements OnInit {
   result: object;
   loading = true;
   panelOpenState = false;
-  const map = Array.prototype.map;
-
+  isInstituteLoad = false;
 
   constructor(public httpBaseService: HttpBaseService,
               private router: Router,
@@ -38,5 +38,15 @@ export class UniversityOverviewComponent implements OnInit {
         this.loading = false;
         console.log(x);
       });
+  }
+  loadInstitute(){
+    if(!this.isInstituteLoad){
+      this.httpBaseService.Get(ApiRouts.getInstitutes + '/university/' + this.university.id.toString())
+        .subscribe(x => {
+          this.university.institutes = x as Institute[];
+          this.isInstituteLoad = true;
+          console.log(x);
+        });
+    }
   }
 }

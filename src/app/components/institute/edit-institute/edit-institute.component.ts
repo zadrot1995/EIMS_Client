@@ -47,5 +47,14 @@ export class EditInstituteComponent implements OnInit {
       this.location.back();
     });
   }
+  onFileSelected(event) {
+    this.selectedFile = event.target.files[0];
+    let testData:FormData = new FormData();
+    testData.append('file', this.selectedFile, this.selectedFile.name);
+    this.http.post(ApiRouts.getInstitutes + '/image/' + this.institute.id.toString(), testData).subscribe(response => {
+      console.log(response);
+      window.location.reload();
+    });
+  }
 
 }

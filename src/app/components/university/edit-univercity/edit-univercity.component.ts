@@ -6,6 +6,7 @@ import {ApiRouts} from "../../../constants";
 import {Guid} from "guid-typescript";
 import {HttpClient} from "@angular/common/http";
 import {Location} from "@angular/common";
+import {Post} from "../../../Models/Post";
 
 @Component({
   selector: 'app-edit-univercity',
@@ -45,8 +46,8 @@ export class EditUnivercityComponent implements OnInit {
     testData.append('file', this.selectedFile, this.selectedFile.name);
     this.http.post(ApiRouts.addUniversityImage + '/' + this.university.id.toString(), testData).subscribe(response => {
       console.log(response);
+      window.location.reload();
     });
-    window.location.reload();
   }
   deleteImage(imageId){
     this.httpBaseService.Delete(ApiRouts.addUniversityImage + "/delete/" + imageId)
@@ -55,7 +56,6 @@ export class EditUnivercityComponent implements OnInit {
         console.log(x);
       });
     window.location.reload();
-
   }
   editUniversity() {
     this.loading = true;
@@ -65,5 +65,13 @@ export class EditUnivercityComponent implements OnInit {
       console.log(x);
       this.location.back();
     });
+  }
+  deletePost(postId){
+    this.httpBaseService.Delete(ApiRouts.posts + "/" + postId)
+      .subscribe(x =>
+      {
+        console.log(x);
+      });
+    window.location.reload();
   }
 }
