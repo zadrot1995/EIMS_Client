@@ -19,6 +19,7 @@ export class AddGroupComponent implements OnInit {
   group = new Group();
   availableTeachers: Teacher[];
   result: object;
+  loading = false;
   constructor(public httpBaseService: HttpBaseService,
               private router: Router,
               private route: ActivatedRoute) {}

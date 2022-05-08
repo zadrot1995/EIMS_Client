@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {Guid} from "guid-typescript";
 import {ApiRouts} from "../../../constants";
+import {DataFormatHelper} from "../../../services/DataFormatHelper";
 
 
 @Component({
@@ -18,12 +19,14 @@ export class UniversityOverviewComponent implements OnInit {
   result: object;
   loading = true;
   panelOpenState = false;
+  const map = Array.prototype.map;
 
 
   constructor(public httpBaseService: HttpBaseService,
               private router: Router,
               private route: ActivatedRoute,
-              private http: HttpClient
+              private http: HttpClient,
+              private datahelper: DataFormatHelper
   ) {
   }
 

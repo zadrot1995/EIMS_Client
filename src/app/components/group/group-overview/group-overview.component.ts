@@ -28,7 +28,7 @@ export class GroupOverviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.group.id = Guid.parse(this.route.snapshot.paramMap.get('groupId'));
+    this.group.id = Guid.parse(this.route.snapshot.paramMap.get('groupId')).toString();
     this.httpBaseService.Get(ApiRouts.groups + '/' + this.group.id.toString())
       .subscribe(x => {
         this.group = x as Group;

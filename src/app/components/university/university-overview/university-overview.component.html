@@ -43,10 +43,26 @@
               </mat-expansion-panel-header>
 
               <div *ngFor="let institute of university.institutes">
-                <a routerLink="/institutes/overview/{{institute.id}}">
-                  <div>
-                    <h4>{{institute.name}}</h4>
+                <a class="institute-list" routerLink="/institutes/overview/{{institute.id}}">
+                  <div class="row">
+                    <div class="col-8">
+
+                  <div class="row">
+                    <div class="col">
+                  <h2>{{institute.name}}</h2>
+                    </div>
                   </div>
+                  <div class="row">
+                    <div class="col">
+                      <p>{{datahelper.shortDescription(institute.about)}}</p>
+                    </div>
+                  </div>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center">
+                      <img src="assets/img/university3.png" class="universityIcon" >
+                    </div>
+                  </div>
+
                 </a>
               </div>
             </mat-expansion-panel>

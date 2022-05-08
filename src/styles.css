@@ -148,3 +148,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   max-width: 400px;
   height: auto;
 }
+
+button{
+  color: white !important;
+}
+a{
+  color: white !important;
+}
+
+.institute-list{
+  color: #b71c1c !important;
+}

@@ -10,5 +10,5 @@ export class Group {
   curator: Teacher;
   curatorId: Guid;
   institute: Institute;
-  instituteId: Guid;
+  instituteId: string;
 }
