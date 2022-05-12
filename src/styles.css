@@ -150,10 +150,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 button{
-  color: white !important;
+  color: red !important;
 }
 a{
-  color: white !important;
+  color: red !important;
 }
 
 .institute-list{

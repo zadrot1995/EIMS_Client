@@ -8,7 +8,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import {HttpClientModule} from '@angular/common/http';
 import { UniversitiesComponent } from './components/university/universities/universities.component';
 import { AddUniversitiesComponent } from './components/university/add-universities/add-universities.component';
-import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
@@ -45,13 +44,24 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { AddUniversityPostComponent } from './components/posts/add-university-post/add-university-post.component';
 import {MatTableModule} from '@angular/material/table';
+import { HomeComponent } from './components/home/home.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import {AuthGuard} from "../auth.guard";
+import {LoginComponent} from "./components/login/login.component";
+import {CustomersComponent} from "./components/customers/customers.component";
+import { FormsModule } from '@angular/forms';
+
+// tslint:disable-next-line:typedef
+export function tokenGetter() {
+  return localStorage.getItem('jwt');
+}
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: '/universities',
-    pathMatch: 'full'
-  },
+  // {
+  //   path: '',
+  //   redirectTo: '/universities',
+  //   pathMatch: 'full'
+  // },
   {
     path: 'universities',
     component: UniversitiesComponent,
@@ -156,6 +166,9 @@ const routes: Routes = [
     path: 'posts/university/:universityId',
     component: AddUniversityPostComponent,
   },
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'customers', component: CustomersComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
@@ -191,7 +204,10 @@ const routes: Routes = [
     SubjectJournalComponent,
     DialogOverviewExampleDialog,
     ContactUsComponent,
-    AddUniversityPostComponent
+    AddUniversityPostComponent,
+    HomeComponent,
+    LoginComponent,
+    CustomersComponent
   ],
     imports: [
         BrowserModule,
@@ -204,9 +220,16 @@ const routes: Routes = [
         MatDialogModule,
         MatExpansionModule,
       IvyCarouselModule,
-      MatTableModule
+      MatTableModule,
+      JwtModule.forRoot({
+        config: {
+          tokenGetter: tokenGetter,
+          allowedDomains: ['localhost:44304'],
+          disallowedRoutes: []
+        }
+      })
     ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

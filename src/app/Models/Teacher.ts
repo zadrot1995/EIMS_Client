@@ -10,5 +10,5 @@ export class Teacher {
   education: string;
   about: string;
   institute: Institute;
-  instituteId: Guid;
+  instituteId: string;
 }
