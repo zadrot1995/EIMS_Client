@@ -22,21 +22,35 @@
 
 
 <div *ngIf="isUserAuthenticated()">
-<ul id="dropdown1" class="dropdown-content">
-  <li><a href="#!">one</a></li>
-  <li><a href="#!">two</a></li>
-  <li class="divider"></li>
-  <li><a href="#!">three</a></li>
-</ul>
-<nav class="#b71c1c red darken-4">
-  <div class="nav-wrapper">
-    <a href="#!" class="brand-logo">Logo</a>
-    <ul class="right hide-on-med-and-down">
-      <li><a href="sass.html">Sass</a></li>
-      <li><a href="badges.html">Components</a></li>
-      <!-- Dropdown Trigger -->
-      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
-    </ul>
-  </div>
-</nav>
+
+  <nav class="#b71c1c red darken-4" >
+    <div class="nav-wrapper">
+      <img class="logoIcon" src="assets/img/sharingan2.png">
+      <a href="#" class="brand-logo">Cursova</a>
+      <ul id="nav-mobile2" class="right hide-on-med-and-down">
+        <li><a routerLink="universities">universities</a></li>
+        <li><a routerLink="/profile">{{getUserData()}}</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<!--<nav class="#b71c1c red darken-4">-->
+<!--  <div class="nav-wrapper red darken-4">-->
+<!--    <a href="#!" class="brand-logo">Logo</a>-->
+<!--    <ul class="right hide-on-med-and-down">-->
+<!--      <li><a href="sass.html">Sass</a></li>-->
+<!--      <li><a href="badges.html">Components</a></li>-->
+<!--      &lt;!&ndash; Dropdown Trigger &ndash;&gt;-->
+<!--      <mat-form-field appearance="outline" class="">-->
+<!--        <mat-label style="color: white">{{getUserData()}}</mat-label>-->
+<!--        <mat-select>-->
+<!--          <mat-option routerLink="/profile">-->
+<!--            Profile-->
+<!--          </mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--</nav>-->
 </div>
+

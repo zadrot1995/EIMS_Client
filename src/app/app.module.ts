@@ -52,6 +52,9 @@ import {CustomersComponent} from "./components/customers/customers.component";
 import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import { RegisterComponent } from './components/register/register.component';
+import {MatSelectModule} from "@angular/material/select";
+import { ProfileComponent } from './components/profile/profile/profile.component';
+import { StudentProfileComponent } from './components/profile/student-profile/student-profile.component';
 
 // tslint:disable-next-line:typedef
 export function tokenGetter() {
@@ -171,7 +174,11 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'customers', component: CustomersComponent, canActivate: [AuthGuard] }
+  { path: 'customers', component: CustomersComponent, canActivate: [AuthGuard] },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+  },
 ];
 
 @NgModule({
@@ -211,7 +218,9 @@ const routes: Routes = [
     HomeComponent,
     LoginComponent,
     CustomersComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent,
+    StudentProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -232,7 +241,8 @@ const routes: Routes = [
         disallowedRoutes: []
       }
     }),
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
