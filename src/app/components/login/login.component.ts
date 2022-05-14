@@ -28,8 +28,11 @@ export class LoginComponent implements OnInit {
       })
         .subscribe({
           next: (response: AuthenticatedResponse) => {
+            debugger;
             const token = response.token;
+            const refreshToken = response.refreshToken;
             localStorage.setItem("jwt", token);
+            localStorage.setItem("refreshToken", refreshToken);
             this.invalidLogin = false;
             this.router.navigate(["/"]);
           },

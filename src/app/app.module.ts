@@ -50,6 +50,7 @@ import {AuthGuard} from "../auth.guard";
 import {LoginComponent} from "./components/login/login.component";
 import {CustomersComponent} from "./components/customers/customers.component";
 import { FormsModule } from '@angular/forms';
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 // tslint:disable-next-line:typedef
 export function tokenGetter() {
@@ -209,26 +210,27 @@ const routes: Routes = [
     LoginComponent,
     CustomersComponent
   ],
-    imports: [
-        BrowserModule,
-        RouterModule.forRoot(routes),
-        HttpClientModule,
-        FormsModule,
-        BrowserAnimationsModule,
-        MatListModule,
-        MatIconModule,
-        MatDialogModule,
-        MatExpansionModule,
-      IvyCarouselModule,
-      MatTableModule,
-      JwtModule.forRoot({
-        config: {
-          tokenGetter: tokenGetter,
-          allowedDomains: ['localhost:44304'],
-          disallowedRoutes: []
-        }
-      })
-    ],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatListModule,
+    MatIconModule,
+    MatDialogModule,
+    MatExpansionModule,
+    IvyCarouselModule,
+    MatTableModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ['localhost:44304'],
+        disallowedRoutes: []
+      }
+    }),
+    MatFormFieldModule
+  ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
 })

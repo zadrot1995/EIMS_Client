@@ -157,9 +157,11 @@ export class SubjectJournalComponent implements OnInit {
 
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'dialog-overview-example-dialog',
   templateUrl: 'dialog-overview-example-dialog.html',
 })
+// tslint:disable-next-line:component-class-suffix
 export class DialogOverviewExampleDialog {
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
