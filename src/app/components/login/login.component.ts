@@ -13,12 +13,12 @@ export class LoginComponent implements OnInit {
   invalidLogin: boolean;
   userName = '';
   password = '';
+
   constructor(private router: Router, private http: HttpClient) { }
   ngOnInit(): void {
 
   }
   login(){
-    debugger;
     var snapshot:any = {
       userName: this.userName,
       password: this.password
@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
       })
         .subscribe({
           next: (response: AuthenticatedResponse) => {
-            debugger;
             const token = response.token;
             const refreshToken = response.refreshToken;
             localStorage.setItem("jwt", token);

@@ -51,6 +51,7 @@ import {LoginComponent} from "./components/login/login.component";
 import {CustomersComponent} from "./components/customers/customers.component";
 import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from "@angular/material/form-field";
+import { RegisterComponent } from './components/register/register.component';
 
 // tslint:disable-next-line:typedef
 export function tokenGetter() {
@@ -169,6 +170,7 @@ const routes: Routes = [
   },
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'customers', component: CustomersComponent, canActivate: [AuthGuard] }
 ];
 
@@ -208,7 +210,8 @@ const routes: Routes = [
     AddUniversityPostComponent,
     HomeComponent,
     LoginComponent,
-    CustomersComponent
+    CustomersComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

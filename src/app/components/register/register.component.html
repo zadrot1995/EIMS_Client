@@ -21,13 +21,31 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <input [(ngModel)]="password" placeholder="password" type="text" class="textInput validate" name="name">
+        <input [(ngModel)]="password" placeholder="password" type="password" class="textInput validate" name="password">
+      </div>
+    </div>
+    <div class="row" *ngIf="role !== 'Admin' && role !== 'Guest'">
+      <div class="col-12">
+        <input [(ngModel)]="detailsKey" placeholder="Key" type="text" class="textInput validate" name="role">
       </div>
     </div>
     <div class="row">
+      <div class="col-12">
+        <h2>You are the: </h2>
+        <select [(ngModel)]="role" class="universitySelect" id="role" name="role">
+          <option value="Student" >Student</option>
+          <option value="Teacher">Teacher</option>
+          <option value="Admin">Admin</option>
+          <option value="Guest">Guest</option>
+        </select>
+      </div>
+    </div>
+
+
+    <div class="row">
       <div class="col">
         <button class="waves-effect waves-light btn red darken-4"(click)="login()">
-          Login
+          Register
         </button>
       </div>
     </div>
