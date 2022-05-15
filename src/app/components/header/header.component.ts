@@ -4,6 +4,7 @@ import {TokenStorageService} from "../../services/TokenStorageService";
 import {HttpBaseService} from "../../services/httpBase.service";
 import {ApiRouts} from "../../constants";
 import {TokenService} from "../../services/Token.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -16,23 +17,17 @@ export class HeaderComponent implements OnInit {
   constructor(private jwtHelper: JwtHelperService,
               private tokenStorageService: TokenStorageService,
               private  httpBase: HttpBaseService,
-              private tokenService: TokenService) { }
+              private tokenService: TokenService,
+              private router: Router) { }
 
   ngOnInit(): void {
 
   }
-  getUserData(){
-    if (this.tokenService.isUserAuthenticated()){
-      if (this.tokenStorageService.getUser() == null) {
-        this.httpBase.Get(ApiRouts.baseUrl + "/auth/getUser").subscribe(x => {
-          this.tokenStorageService.saveUser(x);
-        });
-      }
-      else {
-        this.userName = this.tokenStorageService.getUser().userName;
-      }
-    }
-    return this.userName;
+  logOut = () => {
+    localStorage.removeItem("jwt");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("userData");
+    this.router.navigate(["/"]);
   }
 
 }

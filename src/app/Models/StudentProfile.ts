@@ -4,12 +4,18 @@ import {Institute} from "./Institute";
 import {Post} from "./Post";
 import {Group} from "./Group";
 import {Subject} from "./Subject";
+import {University} from "./University";
+import {UserJournal} from "./UserJournal";
+import {SubjectDto} from "./SubjectDto";
 
-export class UserProfile {
+export class StudentProfile {
   id: Guid;
   firstName: string;
   secondName: string;
   group: Group;
-  subjects: Subject[];
   institute: Institute;
+  university: University;
+  userJournal: UserJournal;
+  userPhoto: string;
+
 }

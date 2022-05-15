@@ -22,4 +22,12 @@ export class DataFormatHelper {
       return 'https://localhost:44304/api/universities/image/' + item.imageContents[0].imageName;
     }
   }
+  getUserPhotoOrDefault(item) {
+    if (item.userPhoto === null || item.userPhoto === undefined || item.userPhoto.length === 0) {
+      return 'assets/img/university3.png';
+    }
+    else {
+      return 'https://localhost:44304/api/universities/image/' + item.userPhoto;
+    }
+  }
 }

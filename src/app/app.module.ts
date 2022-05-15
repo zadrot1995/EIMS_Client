@@ -142,6 +142,7 @@ const routes: Routes = [
   {
     path: 'students/edit/:studentId',
     component: EditStudentComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'students/overview/:studentId',
@@ -178,6 +179,7 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+    canActivate: [AuthGuard]
   },
 ];
 

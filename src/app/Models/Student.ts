@@ -6,4 +6,5 @@ export class Student {
   secondName: string;
   userType: string;
   groupId: string;
+  userPhoto: string;
 }

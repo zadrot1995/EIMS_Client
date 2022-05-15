@@ -1,4 +1,5 @@
 <div class="container" style="margin-bottom:100px;" >
+  <div *ngIf="!loading">
   <div class="row" style="margin-top: 30px">
     <div class="col-12">
       <div class="d-flex justify-content-center textStyledHeader" >
@@ -21,7 +22,7 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <input [(ngModel)]="password" placeholder="password" type="text" class="textInput validate" name="name">
+        <input [(ngModel)]="password" placeholder="password" type="password" class="textInput validate" name="name">
       </div>
     </div>
     <div class="row">
@@ -31,5 +32,12 @@
         </button>
       </div>
     </div>
+  </div>
+  </div>
+  <div class="row" *ngIf="loading">
+    <div class="col-12 center">
+      <app-preloader></app-preloader>
+    </div>
+
   </div>
 </div>

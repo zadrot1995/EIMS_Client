@@ -7,6 +7,7 @@ import {Location} from "@angular/common";
 import {Guid} from "guid-typescript";
 import {ApiRouts} from "../../../constants";
 import {Student} from "../../../Models/Student";
+import {DataFormatHelper} from "../../../services/DataFormatHelper";
 
 @Component({
   selector: 'app-edit-student',
@@ -25,7 +26,8 @@ export class EditStudentComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private http: HttpClient,
-              private location: Location
+              private location: Location,
+              private dataFormatHelper: DataFormatHelper
   ) {
   }
 
@@ -39,12 +41,25 @@ export class EditStudentComponent implements OnInit {
         console.log(x);
       });
   }
-  editStudent() {
+
+  editStudent(){
     this.loading = true;
-    this.httpBaseService.Put(this.student, ApiRouts.students + "/" + this.student.id).subscribe(x =>
-    {
-      console.log(x);
+    let testData: FormData = new FormData();
+    testData.append('file', this.selectedFile, this.selectedFile.name);
+    testData.append('firstName', this.student.firstName);
+    testData.append('secondName', this.student.secondName);
+    testData.append('id', this.student.id);
+    testData.append('userPhoto', this.student.userPhoto);
+
+
+    console.log(testData);
+
+    this.http.put(ApiRouts.students + "/" + this.student.id, testData).subscribe(response => {
+      console.log(response);
       this.location.back();
     });
+  }
+  onFileSelected(event) {
+    this.selectedFile = event.target.files[0];
   }
 }

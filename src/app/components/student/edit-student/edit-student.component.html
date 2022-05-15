@@ -1,13 +1,43 @@
 <div class="container">
   <div *ngIf="!loading">
+    <div class="row" style="margin-top: 30px">
+      <div class="col-12">
+        <div class="d-flex justify-content-center textStyledHeader" >
+          <h1>Edit Student</h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex justify-content-center">
+          <img class="addUniversityIcon" src="assets/img/university3.png">
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div class="input-field col s6">
-        <input [(ngModel)]="student.firstName" id="first_name" type="text" class="validate" name="firstName">
-        <label for="first_name">First Name</label>
+        <input style="font-size: large" [(ngModel)]="student.firstName" placeholder="First name" type="text" class="textInput validate" name="firstName">
       </div>
       <div class="input-field col s6">
-        <input [(ngModel)]="student.secondName" id="second_name" type="text" class="validate" name="secondName">
-        <label for="first_name">First Name</label>
+        <input style="font-size: large" [(ngModel)]="student.secondName" placeholder="Second name" type="text" class="textInput validate" name="secondName">
+      </div>
+    </div>
+    <div class="row">
+    <div class="col-6 d-flex justify-content-start" style="margin-top: 30px; margin-bottom: 30px">
+      <img class="post-image" src="{{dataFormatHelper.getUserPhotoOrDefault(student)}}" style="border: 4px solid #b71c1c; border-radius: 20px">
+    </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <div class="file-field input-field">
+          <div class="btn red darken-4">
+            <span style="color: white">File</span>
+            <input (change)="onFileSelected($event)" type="file">
+          </div>
+          <div class="file-path-wrapper">
+            <input (change)="onFileSelected($event)" class="file-path validate" type="text">
+          </div>
+        </div>
       </div>
     </div>
 

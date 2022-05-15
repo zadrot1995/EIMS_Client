@@ -1,3 +1,8 @@
+<style>
+  a{
+    color: white !important;
+  }
+</style>
 <div *ngIf="!tokenService.isUserAuthenticated()">
 <nav class="#b71c1c red darken-4" >
   <div class="nav-wrapper">
@@ -11,8 +16,8 @@
       <li><a routerLink="groups">groups</a></li>
       <li><a routerLink="students">students</a></li>
       <li><a routerLink="subjects">subjects</a></li>
-      <li><a routerLink="register">register</a></li>
-
+      <li><a routerLink="login">Login</a></li>
+      <li><a routerLink="register">Register</a></li>
 
     </ul>
   </div>
@@ -29,7 +34,11 @@
       <a href="#" class="brand-logo">Cursova</a>
       <ul id="nav-mobile2" class="right hide-on-med-and-down">
         <li><a routerLink="universities">universities</a></li>
-        <li><a routerLink="/profile">{{getUserData()}}</a></li>
+        <li><a (click)="logOut()">Logout</a></li>
+
+        <li><a routerLink="/profile">
+          {{tokenStorageService.getUser() === null ? '' : tokenStorageService.getUser().userName }}
+        </a></li>
       </ul>
     </div>
   </nav>

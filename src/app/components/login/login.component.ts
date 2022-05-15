@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {AuthenticatedResponse} from "../../Models/AuthenticatedResponse";
 import {ApiRouts} from "../../constants";
+import {TokenStorageService} from "../../services/TokenStorageService";
 
 @Component({
   selector: 'app-login',
@@ -13,12 +14,15 @@ export class LoginComponent implements OnInit {
   invalidLogin: boolean;
   userName = '';
   password = '';
+  loading = false;
 
-  constructor(private router: Router, private http: HttpClient) { }
+
+  constructor(private router: Router, private http: HttpClient, private tokenStorageService: TokenStorageService ) { }
   ngOnInit(): void {
 
   }
   login(){
+    this.loading = true;
     var snapshot:any = {
       userName: this.userName,
       password: this.password
@@ -32,8 +36,11 @@ export class LoginComponent implements OnInit {
             const refreshToken = response.refreshToken;
             localStorage.setItem("jwt", token);
             localStorage.setItem("refreshToken", refreshToken);
-            this.invalidLogin = false;
-            this.router.navigate(["/"]);
+            this.http.get(ApiRouts.baseUrl + "/auth/getUser").subscribe(x => {
+                this.tokenStorageService.saveUser(x);
+                this.invalidLogin = false;
+                this.router.navigate(["/"]);
+              });
           },
           error: (err: HttpErrorResponse) => this.invalidLogin = true
         });
