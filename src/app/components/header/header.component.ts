@@ -3,6 +3,7 @@ import {JwtHelperService} from "@auth0/angular-jwt";
 import {TokenStorageService} from "../../services/TokenStorageService";
 import {HttpBaseService} from "../../services/httpBase.service";
 import {ApiRouts} from "../../constants";
+import {TokenService} from "../../services/Token.service";
 
 @Component({
   selector: 'app-header',
@@ -14,13 +15,14 @@ export class HeaderComponent implements OnInit {
   userImageUrl = '';
   constructor(private jwtHelper: JwtHelperService,
               private tokenStorageService: TokenStorageService,
-              private  httpBase: HttpBaseService) { }
+              private  httpBase: HttpBaseService,
+              private tokenService: TokenService) { }
 
   ngOnInit(): void {
 
   }
   getUserData(){
-    if (this.isUserAuthenticated()){
+    if (this.tokenService.isUserAuthenticated()){
       if (this.tokenStorageService.getUser() == null) {
         this.httpBase.Get(ApiRouts.baseUrl + "/auth/getUser").subscribe(x => {
           this.tokenStorageService.saveUser(x);
@@ -32,11 +34,5 @@ export class HeaderComponent implements OnInit {
     }
     return this.userName;
   }
-  isUserAuthenticated = (): boolean => {
-    const token = localStorage.getItem("jwt");
-    if (token && !this.jwtHelper.isTokenExpired(token)){
-      return true;
-    }
-    return false;  }
 
 }

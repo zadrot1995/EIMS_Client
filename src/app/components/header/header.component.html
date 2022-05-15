@@ -1,4 +1,4 @@
-<div *ngIf="!isUserAuthenticated()">
+<div *ngIf="!tokenService.isUserAuthenticated()">
 <nav class="#b71c1c red darken-4" >
   <div class="nav-wrapper">
     <img class="logoIcon" src="assets/img/sharingan2.png">
@@ -21,7 +21,7 @@
 
 
 
-<div *ngIf="isUserAuthenticated()">
+<div *ngIf="tokenService.isUserAuthenticated()">
 
   <nav class="#b71c1c red darken-4" >
     <div class="nav-wrapper">
