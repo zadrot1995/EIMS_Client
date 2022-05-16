@@ -1,8 +1,13 @@
 <div class="container-fluid">
   <div *ngIf="!loading">
-    <div>
-      <h1> Journal of success {{journal.group.name}} on {{journal.subject.name}}</h1>
+    <div class="row" style="margin-top: 30px;">
+      <div class="col-12">
+        <div class="d-flex justify-content-center textStyledHeader" >
+          <h1> Journal of success {{journal.group.name}} on {{journal.subject.name}}</h1>
+        </div>
+      </div>
     </div>
+
     <div>
       <span>File</span>
       <input type="file" (change)="onFileChange($event)" multiple="false">
@@ -39,8 +44,14 @@
         </tr>
       </table>
     </div>
-    <div>
-      <h2>About {{journal.subject.name}}</h2>
+    <div class="row" style="margin-top: 100px;">
+      <div class="col-12">
+        <div class="d-flex justify-content-center textStyledHeader" >
+          <h2>About {{journal.subject.name}}</h2>
+        </div>
+      </div>
+    </div>
+    <div style="margin-bottom: 100px">
       <p>Computer science is the study of computers and computing as well as their theoretical and practical applications. Computer science applies the principles of mathematics, engineering, and logic to a plethora of functions, including algorithm formulation, software and hardware development, and artificial intelligence.</p>
     </div>
   </div>

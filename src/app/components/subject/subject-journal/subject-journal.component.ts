@@ -30,6 +30,7 @@ export interface DialogData {
 })
 export class SubjectJournalComponent implements OnInit {
 
+  role = '';
   selectedFile = null;
   journal = new Journal();
   subjectId: string;
@@ -54,6 +55,14 @@ export class SubjectJournalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.httpBaseService.Get(ApiRouts.baseUrl + '/auth/getUserRole')
+      .subscribe({
+        next: (response: any) => {
+          this.role = response.userType;
+          console.log(this.role);
+          this.loading = false;
+        }
+      });
     this.subjectId = Guid.parse(this.route.snapshot.paramMap.get('subjectId')).toString();
     this.groupId = Guid.parse(this.route.snapshot.paramMap.get('groupId')).toString();
 
@@ -87,29 +96,11 @@ export class SubjectJournalComponent implements OnInit {
   }
 
   openDialog(student: Student): void {
-    let mark = new Mark();
-    mark.studentId = student.id;
-    mark.subjectId = this.subjectId;
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
-      data: mark,
-    });
+    if(this.role == "Teacher") {
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      mark = result;
-      if (mark !== undefined){
-        console.log(mark);
-        this.httpBaseService.Post(mark, ApiRouts.marks).subscribe(x =>
-        {
-          window.location.reload();
-        });
-      }
-    });
-  }
-
-  openDialogEditMark(mark: Mark): void {
-    if (mark !== null && mark !== undefined && mark.value !== 0){
+      let mark = new Mark();
+      mark.studentId = student.id;
+      mark.subjectId = this.subjectId;
       const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
         width: '250px',
         data: mark,
@@ -117,14 +108,35 @@ export class SubjectJournalComponent implements OnInit {
 
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
-        if (result !== undefined){
-          console.log(result);
-          this.httpBaseService.Put(result, ApiRouts.marks + "/" + mark.id).subscribe(x =>
-          {
+        mark = result;
+        if (mark !== undefined) {
+          console.log(mark);
+          this.httpBaseService.Post(mark, ApiRouts.marks).subscribe(x => {
             window.location.reload();
           });
         }
       });
+    }
+  }
+
+  openDialogEditMark(mark: Mark): void {
+    if(this.role == "Teacher") {
+      if (mark !== null && mark !== undefined && mark.value !== 0) {
+        const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+          width: '250px',
+          data: mark,
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
+          if (result !== undefined) {
+            console.log(result);
+            this.httpBaseService.Put(result, ApiRouts.marks + "/" + mark.id).subscribe(x => {
+              window.location.reload();
+            });
+          }
+        });
+      }
     }
   }
 
