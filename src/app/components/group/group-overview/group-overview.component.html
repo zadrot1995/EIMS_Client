@@ -13,16 +13,24 @@
       <span>{{group.curator.firstName}} {{group.curator.secondName}}</span>
     </div>
     </a>
-    <div>
-      <h2>Students</h2>
-    </div>
-    <div *ngFor="let student of group.students">
-      <a routerLink="/students/overview/{{student.id}}">
-        <div>
-          <h4>{{student.firstName}} {{student.secondName}}</h4>
+    <div class="row" style="margin-top: 30px;">
+      <div class="col-12">
+        <div class="d-flex justify-content-center textStyledHeader" >
+          <h2>Students</h2>
         </div>
-      </a>
+      </div>
     </div>
+
+      <div *ngFor="let student of group.students" routerLink="/students/overview/{{student.id}}">
+        <div class="row students-list-item">
+          <div class="col-8">
+                <h2>{{student.firstName}} {{student.secondName}}</h2>
+          </div>
+          <div class="col-4 d-flex justify-content-center">
+            <img src="{{dataFormatHelper.getUserPhotoOrDefault(student)}}" class="universityIcon" >
+          </div>
+        </div>
+      </div>
 
   </div>
   <div class="row" *ngIf="loading">

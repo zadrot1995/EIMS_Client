@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private jwtHelper: JwtHelperService,
               private authGuard: AuthGuard,
-              private tokenService: TokenService) { }
+              public tokenService: TokenService) { }
 
   ngOnInit(): void {
   }

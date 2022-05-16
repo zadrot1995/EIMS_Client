@@ -6,6 +6,7 @@ import {HttpClient} from "@angular/common/http";
 import {Guid} from "guid-typescript";
 import {ApiRouts} from "../../../constants";
 import {Group} from "../../../Models/Group";
+import {DataFormatHelper} from "../../../services/DataFormatHelper";
 
 @Component({
   selector: 'app-group-overview',
@@ -23,7 +24,9 @@ export class GroupOverviewComponent implements OnInit {
   constructor(public httpBaseService: HttpBaseService,
               private router: Router,
               private route: ActivatedRoute,
-              private http: HttpClient
+              private http: HttpClient,
+              private dataFormatHelper: DataFormatHelper
+
   ) {
   }
 

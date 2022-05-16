@@ -1,8 +1,11 @@
 <div class="container">
   <div *ngIf="!loading">
-
-    <div>
-      <h1>{{institute.name}}</h1>
+    <div class="row" style="margin-top: 30px; border: 4px solid #b71c1c; padding: 30px; border-radius: 30px">
+      <div class="col-12">
+        <div class="d-flex justify-content-center textStyledHeader" >
+          <h1 >{{institute.name}}</h1>
+        </div>
+      </div>
     </div>
     <div class="row" style="margin-top: 50px">
       <div class="col-12">
@@ -13,29 +16,90 @@
         </carousel>
       </div>
     </div>
-    <div>
-      <span>{{institute.about}}</span>
-    </div>
-    <div>
-      <h2>Teachers</h2>
-    </div>
-    <div *ngFor="let teacher of institute.teachers">
-      <a routerLink="/teachers/overview/{{teacher.id}}">
-      <div>
-        <h4>{{teacher.firstName}} {{teacher.secondName}}</h4>
+    <div class="row" style="margin-top: 100px">
+      <div class="col-12 textStyled">
+        <span>{{institute.about}}</span>
       </div>
-      </a>
+    </div >
+
+    <div style="margin-top: 50px; padding: 30px" >
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="row" style="margin-top: 30px;">
+                <div class="col-12">
+                  <div class="d-flex justify-content-start textStyledHeader" >
+                    <h2>Teachers</h2>
+                  </div>
+                </div>
+              </div>
+            </mat-panel-title>
+            <mat-panel-description>
+              All subject that institute include...
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+              <div *ngFor="let teacher of institute.teachers">
+                  <a class="institute-list" routerLink="/teachers/overview/{{teacher.id}}">
+                    <div class="row">
+                      <div class="col-8">
+
+                        <div class="row">
+                          <div class="col">
+                            <h2>{{teacher.firstName}} {{teacher.secondName}}</h2>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <p>{{dataFormatHelper.shortDescription(teacher.about)}}</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-4 d-flex justify-content-center">
+                        <img src="{{dataFormatHelper.getImageOrDefault(institute)}}" class="universityIcon" >
+                      </div>
+                    </div>
+                  </a>
+              </div>
+
+        </mat-expansion-panel>
+
+      </mat-accordion>
     </div>
-    <div>
-      <h2>Groups</h2>
-    </div>
-    <div *ngFor="let group of institute.groups">
-      <a routerLink="/groups/overview/{{group.id}}">
-      <div>
-        <h4>{{group.name}}</h4>
-      </div>
-      </a>
-    </div>
+
+<div style="padding: 30px">
+    <mat-accordion >
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="row" style="margin-top: 30px;">
+              <div class="col-12">
+                <div class="d-flex justify-content-start textStyledHeader" >
+                  <h2>Groups</h2>
+                </div>
+              </div>
+            </div>
+          </mat-panel-title>
+          <mat-panel-description>
+            All subject that institute include...
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <mat-list-item *ngFor="let group of institute.groups" routerLink="/groups/overview/{{group.id}}">
+            <a routerLink="/groups/overview/{{group.id}}">
+              <div>
+                <h4>{{group.name}}</h4>
+              </div>
+            </a>
+          </mat-list-item>
+        </mat-nav-list>
+
+      </mat-expansion-panel>
+
+    </mat-accordion>
+</div>
     <div>
       <h2>Subjects</h2>
     </div>
@@ -58,13 +122,6 @@
           <h4>{{subject.name}}</h4>
         </div>
       </a>
-    </div>
-    <div *ngIf="!loading" class="row">
-      <div class="col-3" *ngFor="let image of institute.imageContents">
-        <div>
-          <img style="margin-top: 20px" class="universityIcon" src="https://localhost:44304/api/universities/image/{{image.imageName}}">
-        </div>
-      </div>
     </div>
         </mat-expansion-panel>
 

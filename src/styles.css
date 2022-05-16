@@ -127,6 +127,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-family: "sans-serif";
   font-size: 60px;
 }
+.textStyledHeader h2{
+  color: #b71c1c;
+  font-family: "sans-serif";
+  font-size: 30px;
+}
 .post-title {
   color: #b71c1c;
   font-family: "sans-serif";
@@ -154,7 +159,7 @@ button{
   background-color: #b71c1c ;
 }
 a{
-  color: red !important;
+  color: #b71c1c !important;
 }
 
 .institute-list{
@@ -198,3 +203,15 @@ a{
 .dropdown:hover .dropdown-content {display: block;}
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+.students-list-item{
+  padding: 30px;
+}
+.students-list-item:hover {
+  border: 3px solid #b71c1c;
+}
+
+.block-animation {
+
+  transition: margin-right 1s cubic-bezier(0, 0, 1, 1) 500ms;
+}

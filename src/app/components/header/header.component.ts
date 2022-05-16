@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   constructor(private jwtHelper: JwtHelperService,
               private tokenStorageService: TokenStorageService,
               private  httpBase: HttpBaseService,
-              private tokenService: TokenService,
+              public tokenService: TokenService,
               private router: Router) { }
 
   ngOnInit(): void {
