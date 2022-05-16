@@ -55,6 +55,7 @@ import { RegisterComponent } from './components/register/register.component';
 import {MatSelectModule} from "@angular/material/select";
 import { ProfileComponent } from './components/profile/profile/profile.component';
 import { StudentProfileComponent } from './components/profile/student-profile/student-profile.component';
+import { TeacherProfileComponent } from './components/profile/teacher-profile/teacher-profile.component';
 
 // tslint:disable-next-line:typedef
 export function tokenGetter() {
@@ -222,7 +223,8 @@ const routes: Routes = [
     CustomersComponent,
     RegisterComponent,
     ProfileComponent,
-    StudentProfileComponent
+    StudentProfileComponent,
+    TeacherProfileComponent
   ],
   imports: [
     BrowserModule,

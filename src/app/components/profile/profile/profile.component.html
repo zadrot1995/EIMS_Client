@@ -1,3 +1,13 @@
+<div *ngIf="!loading">
 <div *ngIf="role ==='Student'">
   <app-student-profile></app-student-profile>
+</div>
+<div *ngIf="role ==='Teacher'">
+  <app-teacher-profile></app-teacher-profile>
+</div>
+</div>
+<div *ngIf="loading">
+  <div class="center">
+    <app-preloader></app-preloader>
+  </div>
 </div>

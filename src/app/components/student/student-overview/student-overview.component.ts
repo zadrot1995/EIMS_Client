@@ -6,6 +6,9 @@ import {HttpClient} from "@angular/common/http";
 import {Guid} from "guid-typescript";
 import {ApiRouts} from "../../../constants";
 import {Student} from "../../../Models/Student";
+import {StudentProfile} from "../../../Models/StudentProfile";
+import {Mark} from "../../../Models/Mark";
+import {DataFormatHelper} from "../../../services/DataFormatHelper";
 
 @Component({
   selector: 'app-student-overview',
@@ -14,25 +17,55 @@ import {Student} from "../../../Models/Student";
 })
 export class StudentOverviewComponent implements OnInit {
 
-  student = new Student();
-  result: object;
+  userProfile = new StudentProfile();
   loading = true;
+  practicColCount = 0;
+  averageMark: number;
+  selectedFile = null;
 
 
   constructor(public httpBaseService: HttpBaseService,
               private router: Router,
               private route: ActivatedRoute,
-              private http: HttpClient
+              private http: HttpClient,
+              private dataFormatHelper: DataFormatHelper
   ) {
   }
 
   ngOnInit(): void {
-    this.student.id = Guid.parse(this.route.snapshot.paramMap.get('studentId')).toString();
-    this.httpBaseService.Get(ApiRouts.students + '/' + this.student.id.toString())
-      .subscribe(x => {
-        this.student = x as Student;
-        this.loading = false;
-        console.log(x);
-      });
+    this.userProfile.id = Guid.parse(this.route.snapshot.paramMap.get('studentId')).toString();
+    this.httpBaseService.Get(ApiRouts.students + '/student-overview/' + this.userProfile.id.toString())
+      .subscribe((x) => {
+          this.userProfile = x as StudentProfile;
+          console.log(x);
+
+          let lenghts = [];
+          for (let y of this.userProfile.userJournal.userJournalRows)
+          {
+            lenghts.push(y.practicMarks.length);
+          }
+
+          console.log(x);
+          var subjectsCount = 0;
+          var marksCount = 0;
+
+          this.practicColCount = Math.max.apply(null, lenghts);
+          for (let y of this.userProfile.userJournal.userJournalRows){
+            marksCount += y.total;
+            subjectsCount += 1;
+            if(y.practicMarks.length < this.practicColCount){
+              for (let i = y.practicMarks.length; i < this.practicColCount; i++){
+                let mark = new Mark();
+                mark.value = 0;
+                y.practicMarks.push(mark);
+              }
+            }
+          }
+
+          this.loading = false;
+          this.averageMark = marksCount / subjectsCount;
+          console.log(x);
+        },
+        error => console.log('oops', error));
   }
 }

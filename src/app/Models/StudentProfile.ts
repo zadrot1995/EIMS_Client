@@ -9,7 +9,7 @@ import {UserJournal} from "./UserJournal";
 import {SubjectDto} from "./SubjectDto";
 
 export class StudentProfile {
-  id: Guid;
+  id: string;
   firstName: string;
   secondName: string;
   group: Group;

@@ -24,11 +24,6 @@
         <input [(ngModel)]="password" placeholder="password" type="password" class="textInput validate" name="password">
       </div>
     </div>
-    <div class="row" *ngIf="role !== 'Admin' && role !== 'Guest'">
-      <div class="col-12">
-        <input [(ngModel)]="detailsKey" placeholder="Key" type="text" class="textInput validate" name="role">
-      </div>
-    </div>
     <div class="row">
       <div class="col-12">
         <h2>You are the: </h2>
@@ -38,6 +33,11 @@
           <option value="Admin">Admin</option>
           <option value="Guest">Guest</option>
         </select>
+      </div>
+    </div>
+    <div class="row" *ngIf="role == 'Student' || role == 'Teacher'">
+      <div class="col-12">
+        <input [(ngModel)]="detailsKey" placeholder="Key" type="text" class="textInput validate" name="role">
       </div>
     </div>
 

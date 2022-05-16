@@ -13,6 +13,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 export class ProfileComponent implements OnInit {
 
   role = '';
+  loading = true;
 
   constructor(private  httpBaseService: HttpBaseService) { }
 
@@ -22,6 +23,7 @@ export class ProfileComponent implements OnInit {
         next: (response: any) => {
          this.role = response.userType;
           console.log(this.role);
+          this.loading = false;
         }
       });
   }

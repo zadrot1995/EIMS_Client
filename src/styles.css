@@ -209,9 +209,19 @@ a{
 }
 .students-list-item:hover {
   border: 3px solid #b71c1c;
+  border-radius: 30px;
 }
 
 .block-animation {
-
   transition: margin-right 1s cubic-bezier(0, 0, 1, 1) 500ms;
+}
+
+.profile-image{
+  max-height: 600px;
+  max-width: 600px;
+  width: auto;
+}
+
+.button-white-text{
+  color: white !important;
 }

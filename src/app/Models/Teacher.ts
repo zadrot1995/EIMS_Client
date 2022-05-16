@@ -2,7 +2,7 @@ import {Guid} from "guid-typescript";
 import {Institute} from "./Institute";
 
 export class Teacher {
-  id: Guid;
+  id: string;
   firstName: string;
   secondName: string;
   userType: string;
@@ -11,4 +11,5 @@ export class Teacher {
   about: string;
   institute: Institute;
   instituteId: string;
+  userPhoto: string;
 }

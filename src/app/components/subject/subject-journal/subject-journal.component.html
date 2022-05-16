@@ -28,8 +28,8 @@
           <td (click)="openDialogEditMark(row.secondModularTestWorkMark)">{{row.secondModularTestWorkMark === null? '' : row.secondModularTestWorkMark.value}}</td>
           <td (click)="openDialogEditMark(row.examMark)">{{row.examMark === null ? '' : row.examMark.value}}</td>
           <td class="{{row.total < 21 ? 'criticalMark' : row.total < 50 ? 'waringMark' : ''}}">{{row.total}}</td>
-          <div class="row" style="max-width: 60px">
-            <div class="col">
+          <div class="row" style="">
+            <div class="col d-flex justify-content-center">
           <button class="btn-floating btn-large waves-effect waves-light red darken-4" (click)="openDialog(row.student)">
             <i class="material-icons">add</i>
           </button>

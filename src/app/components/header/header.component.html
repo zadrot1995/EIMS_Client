@@ -3,7 +3,7 @@
     color: white !important;
   }
 </style>
-<div *ngIf="!tokenService.isUserAuthenticated()">
+<div *ngIf="tokenStorageService.getUser() == null">
 <nav class="#b71c1c red darken-4" >
   <div class="nav-wrapper">
     <img class="logoIcon" src="assets/img/sharingan2.png">
@@ -26,7 +26,7 @@
 
 
 
-<div *ngIf="tokenService.isUserAuthenticated()">
+<div *ngIf="tokenStorageService.getUser() !== null">
 
   <nav class="#b71c1c red darken-4" >
     <div class="nav-wrapper">

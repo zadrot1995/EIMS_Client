@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {AuthenticatedResponse} from "../../Models/AuthenticatedResponse";
 import {ApiRouts} from "../../constants";
+import {TokenStorageService} from "../../services/TokenStorageService";
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,7 @@ export class RegisterComponent implements OnInit {
   detailsKey = '';
   role = '';
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient, private tokenStorageService: TokenStorageService) { }
   ngOnInit(): void {
 
   }
@@ -36,6 +37,11 @@ export class RegisterComponent implements OnInit {
           const refreshToken = response.refreshToken;
           localStorage.setItem("jwt", token);
           localStorage.setItem("refreshToken", refreshToken);
+          this.http.get(ApiRouts.baseUrl + "/auth/getUser").subscribe(x => {
+            this.tokenStorageService.saveUser(x);
+            this.invalidLogin = false;
+            this.router.navigate(["/"]);
+          });
           this.invalidLogin = false;
           this.router.navigate(["/"]);
         },

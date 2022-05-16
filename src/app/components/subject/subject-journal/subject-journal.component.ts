@@ -109,21 +109,23 @@ export class SubjectJournalComponent implements OnInit {
   }
 
   openDialogEditMark(mark: Mark): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
-      data: mark,
-    });
+    if (mark !== null && mark !== undefined && mark.value !== 0){
+      const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+        width: '250px',
+        data: mark,
+      });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      if (result !== undefined){
-        console.log(result);
-        this.httpBaseService.Put(result, ApiRouts.marks + "/" + mark.id).subscribe(x =>
-        {
-          window.location.reload();
-        });
-      }
-    });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        if (result !== undefined){
+          console.log(result);
+          this.httpBaseService.Put(result, ApiRouts.marks + "/" + mark.id).subscribe(x =>
+          {
+            window.location.reload();
+          });
+        }
+      });
+    }
   }
 
 

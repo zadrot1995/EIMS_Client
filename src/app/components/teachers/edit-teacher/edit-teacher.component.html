@@ -1,39 +1,57 @@
 <div class="container">
   <div *ngIf="!loading">
+
     <div class="row">
       <div class="input-field col s6">
-        <input [(ngModel)]="teacher.firstName" id="first_name" type="text" class="validate" name="firstName">
-        <label for="first_name">First Name</label>
+        <input style="font-size: large" [(ngModel)]="teacher.firstName" placeholder="First name" type="text" class="textInput validate" name="firstName">
       </div>
       <div class="input-field col s6">
-        <input [(ngModel)]="teacher.secondName" id="second_name" type="text" class="validate" name="secondName">
-        <label for="first_name">First Name</label>
+        <input style="font-size: large" [(ngModel)]="teacher.secondName" placeholder="Second name" type="text" class="textInput validate" name="secondName">
       </div>
-      <div class="input-field col s6">
-        <input [(ngModel)]="teacher.degree" id="degree" type="text" class="validate" name="degree">
-        <label for="first_name">First Name</label>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <input [(ngModel)]="teacher.degree" placeholder="degree" type="text" class="textInput validate" name="name">
       </div>
-      <div class="input-field col s6">
-        <input [(ngModel)]="teacher.education" id="education" type="text" class="validate" name="education">
-        <label for="first_name">First Name</label>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <input [(ngModel)]="teacher.education" placeholder="education" type="text" class="textInput validate" name="name">
       </div>
-
-      <div class="row">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s12">
-              <textarea style="height: 200px" name="about" [(ngModel)]="teacher.about" id="textarea1" class="materialize-textarea">{{teacher.about}}</textarea>
-              <label for="textarea1">About</label>
-            </div>
-          </div>
-        </form>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <!--      <input [(ngModel)]="university.about" placeholder="About" type="text" class="textInput validate" name="about">-->
+        <textarea [(ngModel)]="teacher.about" class="textInput" id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
       </div>
     </div>
 
     <div class="row">
-      <button (click)="editTeacher()">
-        Edit
-      </button>
+      <div class="col-6 d-flex justify-content-start" style="margin-top: 30px; margin-bottom: 30px">
+        <img class="profile-image" src="{{dataFormatHelper.getUserPhotoOrDefault(teacher)}}" style="border: 4px solid #b71c1c; border-radius: 20px">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <div class="file-field input-field">
+          <div class="btn red darken-4">
+            <span style="color: white">File</span>
+            <input (change)="onFileSelected($event)" type="file">
+          </div>
+          <div class="file-path-wrapper">
+            <input (change)="onFileSelected($event)" class="file-path validate" type="text">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <button class="btn waves-effect waves-light  red darken-4 button-white-text" (click)="editTeacher()">
+          Edit
+          <i class="material-icons right">edit</i>
+        </button>
+      </div>
     </div>
   </div>
   <div class="row" *ngIf="loading">
