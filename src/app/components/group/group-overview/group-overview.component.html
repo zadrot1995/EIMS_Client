@@ -1,18 +1,47 @@
 <div class="container">
   <div *ngIf="!loading">
 
-    <div>
-      <h1>{{group.name}}</h1>
+    <div class="row" style="margin-top: 30px; border: 4px solid #b71c1c; padding: 30px; border-radius: 30px">
+      <div class="col-12">
+        <div class="d-flex justify-content-center textStyledHeader" >
+          <h1 >{{group.name}}</h1>
+        </div>
+      </div>
     </div>
 
-    <div>
-      <h2>Curator:</h2>
+    <div class="row" style="margin-top: 30px;">
+      <div class="col-12">
+        <div class="d-flex justify-content-center textStyledHeader" >
+          <h2>Curator</h2>
+        </div>
+      </div>
     </div>
-    <a routerLink="/teachers/overview/{{group.curator.id}}">
-    <div>
-      <span>{{group.curator.firstName}} {{group.curator.secondName}}</span>
+
+    <div class="row">
+      <div class="col">
+        <a class="institute-list" routerLink="/teachers/overview/{{group.curatorId}}">
+          <div class="row">
+            <div class="col-8">
+
+              <div class="row">
+                <div class="col">
+                  <h2>{{group.curator.firstName}} {{group.curator.secondName}}</h2>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <p>{{dataFormatHelper.shortDescription(group.curator.about)}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-4 d-flex justify-content-center">
+              <img src="{{dataFormatHelper.getUserPhotoOrDefault(group.curator)}}" class="universityIcon" >
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
-    </a>
+
     <div class="row" style="margin-top: 30px;">
       <div class="col-12">
         <div class="d-flex justify-content-center textStyledHeader" >
@@ -24,7 +53,7 @@
       <div *ngFor="let student of group.students" routerLink="/students/overview/{{student.id}}">
         <div class="row students-list-item">
           <div class="col-8">
-                <h2>{{student.firstName}} {{student.secondName}}</h2>
+                <h2 style="color: #b71c1c">{{student.firstName}} {{student.secondName}}</h2>
           </div>
           <div class="col-4 d-flex justify-content-center">
             <img src="{{dataFormatHelper.getUserPhotoOrDefault(student)}}" class="universityIcon" >

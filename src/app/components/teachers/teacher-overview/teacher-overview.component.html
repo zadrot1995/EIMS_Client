@@ -1,25 +1,86 @@
 <div class="container">
   <div *ngIf="!loading">
+    <div class="row" style="margin-top: 100px" >
+      <div class="col-6 textStyled">
+        <div class="post-title" >
+          <h1 style="font-size: xx-large"><b>{{userProfile.teacher.firstName}} {{userProfile.teacher.secondName}}</b></h1>
+        </div>
 
-    <div>
-      <h1>{{teacher.firstName}} {{teacher.secondName}}</h1>
-    </div>
-    <div>
-      <span>{{teacher.about}}</span>
-    </div>
-    <div>
-      <h2>degree</h2>
-    </div>
-    <div>
-      <h4>{{teacher.degree}}</h4>
-    </div>
-    <div>
-      <h2>education</h2>
-    </div>
-    <div>
-      <h4>{{teacher.education}}</h4>
+        <div class="row">
+          <div class="col-12">
+            <span>Institute: </span>
+            <a routerLink="/institutes/overview/{{userProfile.institute.id}}">
+              <span>{{userProfile.institute.name}}</span>
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <span>Degree: {{userProfile.teacher.degree}}</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <span>Education: {{userProfile.teacher.education}}</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <span>{{userProfile.teacher.about}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 d-flex justify-content-end">
+        <img class="profile-image" src="{{dataFormatHelper.getUserPhotoOrDefault(userProfile.teacher)}}" style="border: 4px solid #b71c1c; border-radius: 20px">
+      </div>
+      <div class="col-12">
+        <a routerLink="/teachers/edit/{{userProfile.teacher.id}}" class="btn waves-effect waves-light  red darken-4 button-white-text" type="submit" name="action">Edit
+          <i class="material-icons right">edit</i>
+        </a>
+      </div>
     </div>
 
+    <div class="row" style="margin-top: 100px;">
+      <div class="col-12">
+        <div class="d-flex justify-content-center textStyledHeader" >
+          <h2>Lectures</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="border: 3px solid #b71c1c; border-radius: 30px; padding: 30px">
+      <div class="col">
+        <mat-nav-list>
+          <mat-list-item *ngFor="let subject of userProfile.lectureSubjects" routerLink="/subjects/overview/{{subject.id}}">
+            <a routerLink="/subjects/overview/{{subject.id}}">
+              <div>
+                <h4>{{subject.name}}</h4>
+              </div>
+            </a>
+          </mat-list-item>
+        </mat-nav-list>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 30px;">
+      <div class="col-12">
+        <div class="d-flex justify-content-center textStyledHeader" >
+          <h2>Practical</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="border: 3px solid #b71c1c; border-radius: 30px; padding: 30px">
+      <div class="col">
+        <mat-nav-list>
+          <mat-list-item *ngFor="let subject of userProfile.practicalSubjects" routerLink="/subjects/overview/{{subject.id}}">
+            <a routerLink="/subjects/overview/{{subject.id}}">
+              <div>
+                <h4>{{subject.name}}</h4>
+              </div>
+            </a>
+          </mat-list-item>
+        </mat-nav-list>
+      </div>
+    </div>
   </div>
   <div class="row" *ngIf="loading">
     <div class="col-12 center">
@@ -27,4 +88,5 @@
     </div>
 
   </div>
+
 </div>

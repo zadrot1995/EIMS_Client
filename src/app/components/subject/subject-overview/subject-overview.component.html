@@ -1,37 +1,99 @@
 <div class="container">
   <div *ngIf="!loading">
 
-    <div>
-      <h1>{{subject.name}}</h1>
+    <div class="row" style="margin-top: 30px; border: 4px solid #b71c1c; padding: 30px; border-radius: 30px">
+      <div class="col-12">
+        <div class="d-flex justify-content-center textStyledHeader" >
+          <h1 >{{subject.name}}</h1>
+        </div>
+      </div>
     </div>
 
-    <div>
-      <h2>Lecturer:</h2>
-    </div>
-    <a routerLink="/teachers/overview/{{subject.lecturerId}}">
-      <div>
-        <span>{{subject.lecturer.firstName}} {{subject.lecturer.secondName}}</span>
-      </div>
-    </a>
-    <div>
-      <h2>Practitioner:</h2>
-    </div>
-    <a routerLink="/teachers/overview/{{subject.practitionerId}}">
-      <div>
-        <span>{{subject.practitioner.firstName}} {{subject.practitioner.secondName}}</span>
-      </div>
-    </a>
-    <div>
-      <h2>Groups</h2>
-    </div>
-    <div *ngFor="let group of subject.groups">
-      <a routerLink="/groups/overview/{{group.id}}">
-        <div>
-          <h4>{{group.name}}</h4>
+    <div class="row" style="margin-top: 30px;">
+      <div class="col-12">
+        <div class="d-flex justify-content-center textStyledHeader" >
+          <h2>Lector</h2>
         </div>
-      </a>
-      <div>
-        <a routerLink="/marks/journal/{{subject.id}}/{{group.id}}">View journal</a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <a class="institute-list" routerLink="/teachers/overview/{{subject.lecturerId}}">
+          <div class="row">
+            <div class="col-8">
+
+              <div class="row">
+                <div class="col">
+                  <h2>{{subject.lecturer.firstName}} {{subject.lecturer.secondName}}</h2>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <p>{{dataFormatHelper.shortDescription(subject.lecturer.about)}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-4 d-flex justify-content-center">
+              <img src="{{dataFormatHelper.getUserPhotoOrDefault(subject.lecturer)}}" class="universityIcon" >
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+
+    <div class="row" style="margin-top: 30px;">
+      <div class="col-12">
+        <div class="d-flex justify-content-center textStyledHeader" >
+          <h2>Practitioner</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <a class="institute-list" routerLink="/teachers/overview/{{subject.practitionerId}}">
+          <div class="row">
+            <div class="col-8">
+
+              <div class="row">
+                <div class="col">
+                  <h2>{{subject.practitioner.firstName}} {{subject.practitioner.secondName}}</h2>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <p>{{dataFormatHelper.shortDescription(subject.practitioner.about)}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-4 d-flex justify-content-center">
+              <img src="{{dataFormatHelper.getUserPhotoOrDefault(subject.practitioner)}}" class="universityIcon" >
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 30px;">
+      <div class="col-12">
+        <div class="d-flex justify-content-center textStyledHeader" >
+          <h2>Groups</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-nav-list>
+          <mat-list-item *ngFor="let group of subject.groups" routerLink="/groups/overview/{{group.id}}">
+            <a routerLink="/groups/overview/{{group.id}}">
+              <div>
+                <h4>{{group.name}}</h4>
+              </div>
+            </a>
+          </mat-list-item>
+        </mat-nav-list>
       </div>
     </div>
 

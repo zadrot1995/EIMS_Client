@@ -11,6 +11,7 @@ import {Journal} from "../../../Models/Journal";
 import {MatDialogModule} from '@angular/material/dialog';
 import {Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {DataFormatHelper} from "../../../services/DataFormatHelper";
 @Component({
   selector: 'app-subject-overview',
   templateUrl: './subject-overview.component.html',
@@ -28,7 +29,9 @@ export class SubjectOverviewComponent implements OnInit {
   constructor(public httpBaseService: HttpBaseService,
               private router: Router,
               private route: ActivatedRoute,
-              private http: HttpClient
+              private http: HttpClient,
+              private dataFormatHelper: DataFormatHelper
+
   ) {
   }
 
