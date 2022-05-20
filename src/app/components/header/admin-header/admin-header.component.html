@@ -1,0 +1,24 @@
+<style>
+  a{
+    color: white !important;
+  }
+</style>
+<nav class="#b71c1c red darken-4" >
+  <div class="nav-wrapper">
+    <img class="logoIcon" src="assets/img/sharingan2.png">
+    <a href="#" class="brand-logo">Cursova</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a routerLink="universities">universities</a></li>
+      <li><a routerLink="institutes">institute</a></li>
+      <li><a routerLink="teachers">teachers</a></li>
+      <li><a routerLink="groups">groups</a></li>
+      <li><a routerLink="students">students</a></li>
+      <li><a routerLink="subjects">subjects</a></li>
+      <li><a (click)="logOut()">Logout</a></li>
+
+      <li><a routerLink="/profile">
+        {{tokenStorageService.getUser() === null ? '' : tokenStorageService.getUser().userName }}
+      </a></li>
+    </ul>
+  </div>
+</nav>

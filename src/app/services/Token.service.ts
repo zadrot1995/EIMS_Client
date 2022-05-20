@@ -19,10 +19,10 @@ export class TokenService {
     if (token && !this.jwtHelper.isTokenExpired(token)){
       return true;
     }
-    // const isRefreshSuccess = this.tryRefreshingTokens(token);
-    // if (!isRefreshSuccess) {
-    //   this.router.navigate(["login"]);
-    // }
+    const isRefreshSuccess = this.tryRefreshingTokens(token);
+    if (!isRefreshSuccess) {
+      this.router.navigate(["login"]);
+    }
     return false;
   }
 
@@ -48,5 +48,23 @@ export class TokenService {
     localStorage.setItem('refreshToken', refreshRes.refreshToken);
     isRefreshSuccess = true;
     return isRefreshSuccess;
+  }
+  isAdmin(): boolean{
+    let jwt = localStorage.getItem('jwt');
+    if (jwt !== null) {
+
+
+      let jwtData = jwt.split('.')[1];
+      let decodedJwtJsonData = window.atob(jwtData);
+      let decodedJwtData = JSON.parse(decodedJwtJsonData);
+
+      let role = decodedJwtData['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+      if (role !== null || role !== undefined)
+      {
+        return role === 'Admin';
+      }
+    }
+    return null;
+
   }
 }

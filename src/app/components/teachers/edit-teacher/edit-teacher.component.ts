@@ -33,7 +33,7 @@ export class EditTeacherComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.teacher.id = Guid.parse(this.route.snapshot.paramMap.get('teacherId'));
+    this.teacher.id = Guid.parse(this.route.snapshot.paramMap.get('teacherId')).toString();
 
     this.httpBaseService.Get(ApiRouts.teachers + '/' + this.teacher.id.toString())
       .subscribe(x => {

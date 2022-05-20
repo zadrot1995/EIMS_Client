@@ -8,6 +8,7 @@ import {DataFormatHelper} from "../../../services/DataFormatHelper";
 import {ApiRouts} from "../../../constants";
 import {Mark} from "../../../Models/Mark";
 import {TeacherProfileDto} from "../../../Models/TeacherProfileDto";
+import {TokenService} from "../../../services/Token.service";
 
 @Component({
   selector: 'app-teacher-profile',
@@ -19,6 +20,7 @@ export class TeacherProfileComponent implements OnInit {
   userProfile: TeacherProfileDto;
   loading = true;
   selectedFile = null;
+  isAdmit: false;
 
 
   constructor(public httpBaseService: HttpBaseService,
@@ -26,9 +28,14 @@ export class TeacherProfileComponent implements OnInit {
               private route: ActivatedRoute,
               private http: HttpClient,
               private tokenStorageService: TokenStorageService,
-              private dataFormatHelper: DataFormatHelper) { }
+              private dataFormatHelper: DataFormatHelper,
+              private tokenService: TokenService) { }
 
   ngOnInit(): void {
+    if (this.tokenService.isUserAuthenticated()){
+      this.isAdmit = this.tokenService.isAdmin();
+      console.log(this.isAdmit);
+    }
     this.httpBaseService.Get(ApiRouts.teachers + '/get-teacher-profile/' + this.tokenStorageService.getUser().id)
       .subscribe((x) => {
           this.userProfile = x as TeacherProfileDto;

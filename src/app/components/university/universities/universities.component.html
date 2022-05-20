@@ -1,3 +1,10 @@
+
+<style>
+  a{
+    color: white !important;
+  }
+</style>
+
 <div class="container">
 <div *ngIf="!loading">
 <div *ngFor="let university of universities" class="universityList">
@@ -35,7 +42,7 @@
     </a>
     </div>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="isAdmit">
     <div class="col-3">
       <a routerLink="edit/{{university.id}}" class="btn waves-effect waves-light  red darken-4 button-white-text" type="submit" name="action">Edit
         <i class="material-icons right">send</i>
@@ -49,6 +56,13 @@
   </div>
 
 </div>
+  <div class="row" style="margin-top: 100px" *ngIf="isAdmit">
+    <div class="col d-flex justify-content-center">
+      <a style=";" routerLink="add" class="btn-large waves-effect waves-light  red darken-4" name="AddUniversity">Add
+        <i style="color: white;" class="material-icons right">add</i>
+      </a>
+    </div>
+  </div>
 </div>
 <div class="row" *ngIf="loading">
   <div class="col-12 center">

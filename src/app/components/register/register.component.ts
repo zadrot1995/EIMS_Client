@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   invalidLogin: boolean;
   userName = '';
   password = '';
-  detailsKey = '';
+  detailsKey: string;
   role = '';
 
   constructor(private router: Router, private http: HttpClient, private tokenStorageService: TokenStorageService) { }
@@ -28,6 +28,7 @@ export class RegisterComponent implements OnInit {
       userDetails: this.detailsKey,
       userType: this.role
     };
+    debugger;
     this.http.post<AuthenticatedResponse>( ApiRouts.baseUrl +"/auth/register", snapshot, {
       headers: new HttpHeaders({ "Content-Type": "application/json"})
     })

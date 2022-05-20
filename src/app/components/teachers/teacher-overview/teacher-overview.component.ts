@@ -9,6 +9,7 @@ import {Teacher} from "../../../Models/Teacher";
 import {TeacherProfileDto} from "../../../Models/TeacherProfileDto";
 import {TokenStorageService} from "../../../services/TokenStorageService";
 import {DataFormatHelper} from "../../../services/DataFormatHelper";
+import {TokenService} from "../../../services/Token.service";
 
 @Component({
   selector: 'app-teacher-overview',
@@ -21,6 +22,8 @@ export class TeacherOverviewComponent implements OnInit {
   userProfile: TeacherProfileDto;
   loading = true;
   selectedFile = null;
+  isAdmit: false;
+
 
 
   constructor(public httpBaseService: HttpBaseService,
@@ -28,9 +31,14 @@ export class TeacherOverviewComponent implements OnInit {
               private route: ActivatedRoute,
               private http: HttpClient,
               private tokenStorageService: TokenStorageService,
-              private dataFormatHelper: DataFormatHelper) { }
+              private dataFormatHelper: DataFormatHelper,
+              private tokenService: TokenService) { }
 
   ngOnInit(): void {
+    if (this.tokenService.isUserAuthenticated()){
+      this.isAdmit = this.tokenService.isAdmin();
+      console.log(this.isAdmit);
+    }
     var id = Guid.parse(this.route.snapshot.paramMap.get('teacherId')).toString();
 
     this.httpBaseService.Get(ApiRouts.teachers + '/teacher-overview/' + id)

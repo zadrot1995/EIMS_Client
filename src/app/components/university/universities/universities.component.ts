@@ -3,6 +3,7 @@ import {University} from '../../../Models/University';
 import {HttpBaseService} from '../../../services/httpBase.service';
 import {ApiRouts} from '../../../constants';
 import {MatListModule} from '@angular/material/list';
+import {TokenService} from "../../../services/Token.service";
 
 @Component({
   selector: 'app-universities',
@@ -11,10 +12,15 @@ import {MatListModule} from '@angular/material/list';
 })
 export class UniversitiesComponent implements OnInit {
   universities: University[];
-  constructor(public httpBaseService: HttpBaseService) {}
+  isAdmit: false;
+  constructor(public httpBaseService: HttpBaseService,
+              private tokenService: TokenService) {}
   loading = true;
   ngOnInit(): void {
-
+    if (this.tokenService.isUserAuthenticated()){
+      this.isAdmit = this.tokenService.isAdmin();
+      console.log(this.isAdmit);
+    }
       this.httpBaseService.Get(ApiRouts.getUniversities)
         .subscribe(x =>
         {

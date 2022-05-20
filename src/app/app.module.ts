@@ -56,6 +56,8 @@ import {MatSelectModule} from "@angular/material/select";
 import { ProfileComponent } from './components/profile/profile/profile.component';
 import { StudentProfileComponent } from './components/profile/student-profile/student-profile.component';
 import { TeacherProfileComponent } from './components/profile/teacher-profile/teacher-profile.component';
+import { AdminHeaderComponent } from './components/header/admin-header/admin-header.component';
+import { UserHeaderComponent } from './components/header/user-header/user-header.component';
 
 // tslint:disable-next-line:typedef
 export function tokenGetter() {
@@ -63,14 +65,16 @@ export function tokenGetter() {
 }
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: '/universities',
-  //   pathMatch: 'full'
-  // },
+  {
+    path: '',
+    redirectTo: '/universities',
+    canActivate: [AuthGuard],
+    pathMatch: 'full'
+  },
   {
     path: 'universities',
     component: UniversitiesComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'universities/add',
@@ -224,7 +228,9 @@ const routes: Routes = [
     RegisterComponent,
     ProfileComponent,
     StudentProfileComponent,
-    TeacherProfileComponent
+    TeacherProfileComponent,
+    AdminHeaderComponent,
+    UserHeaderComponent
   ],
   imports: [
     BrowserModule,
