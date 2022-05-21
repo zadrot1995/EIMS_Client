@@ -20,7 +20,7 @@ export class TeacherProfileComponent implements OnInit {
   userProfile: TeacherProfileDto;
   loading = true;
   selectedFile = null;
-  isAdmit: false;
+  isAdmit = false;
 
 
   constructor(public httpBaseService: HttpBaseService,

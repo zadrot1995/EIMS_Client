@@ -5,6 +5,9 @@
 <div *ngIf="role ==='Teacher'">
   <app-teacher-profile></app-teacher-profile>
 </div>
+  <div class="center" *ngIf="role === 'Admin'">
+    <h1>Welcome, Admin!</h1>
+  </div>
 </div>
 <div *ngIf="loading">
   <div class="center">

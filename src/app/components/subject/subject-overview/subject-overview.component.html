@@ -87,16 +87,22 @@
       <div class="col">
         <mat-nav-list>
           <mat-list-item *ngFor="let group of subject.groups" routerLink="/groups/overview/{{group.id}}">
-            <a routerLink="/groups/overview/{{group.id}}">
-              <div>
-                <h4>{{group.name}}</h4>
-              </div>
-            </a>
-            <div class="row">
-              <div class="col">
-                <a routerLink="/marks/journal/{{subject.id}}/{{group.id}}">View journal</a>
-              </div>
+
+            <div mat-line>
+              <a routerLink="/groups/overview/{{group.id}}">
+                <div>
+                  <h4>{{group.name}}</h4>
+                </div>
+              </a>
             </div>
+
+            <div mat-line>
+              <button routerLink="/marks/journal/{{subject.id}}/{{group.id}}">
+                View journal
+              </button>
+            </div>
+
+
           </mat-list-item>
         </mat-nav-list>
       </div>

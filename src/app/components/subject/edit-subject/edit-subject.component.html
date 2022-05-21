@@ -1,17 +1,17 @@
 <div class="container">
   <div *ngIf="!loading && availableTeachers.length !== 0">
+
     <div class="row">
-      <div class="input-field col s6">
-        <input [(ngModel)]="subject.name" id="first_name" type="text" class="validate" name="name">
-        <label for="first_name">Name</label>
+      <div class="col-12">
+        <input [(ngModel)]="subject.name" placeholder="Name" type="text" class="textInput validate" name="name">
       </div>
     </div>
 
-    <select [(ngModel)]="subject.lecturerId" *ngFor="let teacher of availableTeachers" class="universitySelect" id="lecturer" name="lecturer">
-      <option value="{{teacher.id}}">{{teacher.firstName}} {{teacher.secondName}}</option>
+    <select [(ngModel)]="subject.lecturerId" class="universitySelect" id="lecturer" name="lecturer">
+      <option *ngFor="let teacher of availableTeachers" value="{{teacher.id}}">{{teacher.firstName}} {{teacher.secondName}}</option>
     </select>
-    <select [(ngModel)]="subject.practitionerId" *ngFor="let teacher of availableTeachers" class="universitySelect" id="practitioner" name="practitioner">
-      <option value="{{teacher.id}}">{{teacher.firstName}} {{teacher.secondName}}</option>
+    <select [(ngModel)]="subject.practitionerId" class="universitySelect" id="practitioner" name="practitioner">
+      <option *ngFor="let teacher of availableTeachers" value="{{teacher.id}}">{{teacher.firstName}} {{teacher.secondName}}</option>
     </select>
     <div>
       <h2>Groups</h2>
@@ -43,9 +43,11 @@
     </div>
 
     <div class="row">
-      <button (click)="editSubject()">
-        Save
-      </button>
+      <div class="col d-flex justify-content-center">
+        <button (click)="editSubject()" class="btn-large waves-effect waves-light  red darken-4" name="AddUniversity">Save
+          <i style="color: white;" class="material-icons right">save</i>
+        </button>
+      </div>
     </div>
   </div>
   <div class="row" *ngIf="loading">

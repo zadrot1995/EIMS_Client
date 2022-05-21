@@ -1,3 +1,8 @@
+<style>
+  a{
+    color: white !important;
+  }
+</style>
 <div class="container">
   <div *ngIf="!loading">
     <div *ngFor="let student of students" class="universityList">
@@ -17,7 +22,7 @@
                 <div class="col-1">
                 </div>
                 <div class="col-md-3 col-sm-12" *ngIf="!loading">
-                  <img class="universityIcon" src="assets/img/university3.png">
+                  <img class="universityIcon" src="{{dataFormatHelper.getUserPhotoOrDefault(student)}}">
                 </div>
               </div>
 

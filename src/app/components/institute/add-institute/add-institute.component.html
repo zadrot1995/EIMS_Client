@@ -1,11 +1,46 @@
+<div class="container">
+  <div class="row" style="margin-top: 30px">
+    <div class="col-12">
+      <div class="d-flex justify-content-center textStyledHeader" >
+        <h1 >Add new institute</h1>
+      </div>
+    </div>
+  </div>
 
-<input [(ngModel)]="institute.name" placeholder="Name" type="text" class="textInput validate" name="name">
-<input [(ngModel)]="institute.about" placeholder="About" type="text" class="textInput validate" name="about">
-<label for="universities">Select university</label>
-<select [(ngModel)]="institute.universityId" *ngFor="let university of universities" class="universitySelect" id="universities" name="universities">
-  <option value="{{university.id}}">{{university.name}}</option>
-</select>
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-center">
+        <img class="addUniversityIcon" src="assets/img/university3.png">
+      </div>
+    </div>
+  </div>
 
-<button (click)="addInstitute()">
-  Add
-</button>
+  <div style="margin-left: 100px; margin-right: 100px">
+    <div class="row">
+      <div class="col-12">
+        <input [(ngModel)]="institute.name" placeholder="Name" type="text" class="textInput validate" name="name">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <!--      <input [(ngModel)]="university.about" placeholder="About" type="text" class="textInput validate" name="about">-->
+        <textarea [(ngModel)]="institute.about" class="textInput" id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="universities">Select university</label>
+        <select [(ngModel)]="institute.universityId" *ngFor="let university of universities" class="universitySelect" id="universities" name="universities">
+          <option value="{{university.id}}">{{university.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="waves-effect waves-light btn red darken-4"(click)="addInstitute()">
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

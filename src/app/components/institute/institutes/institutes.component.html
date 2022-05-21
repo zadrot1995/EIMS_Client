@@ -49,6 +49,15 @@
       </div>
 
     </div>
+
+    <div class="row" style="margin-top: 100px" *ngIf="isAdmit">
+      <div class="col d-flex justify-content-center">
+        <a routerLink="add/e70c086d-7d55-444c-1826-08da2cfbc62e" class="btn-large waves-effect waves-light  red darken-4" name="AddUniversity">Add
+          <i style="color: white;" class="material-icons right">add</i>
+        </a>
+      </div>
+    </div>
+
   </div>
   <div class="row" *ngIf="loading">
     <div class="col-12 center">
