@@ -13,7 +13,7 @@ import {TokenService} from "../../../services/Token.service";
 export class InstitutesComponent implements OnInit {
   institutes: Institute[];
   loading = true;
-  isAdmit: false;
+  isAdmit = false;
 
   constructor(public httpBaseService: HttpBaseService,
               public dataFormatHelper: DataFormatHelper,

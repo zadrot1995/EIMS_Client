@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   userName = '';
   userImageUrl = '';
   constructor(private jwtHelper: JwtHelperService,
-              private tokenStorageService: TokenStorageService,
+              public tokenStorageService: TokenStorageService,
               private  httpBase: HttpBaseService,
               public tokenService: TokenService,
               private router: Router) { }

@@ -22,7 +22,8 @@ export class TeacherOverviewComponent implements OnInit {
   userProfile: TeacherProfileDto;
   loading = true;
   selectedFile = null;
-  isAdmit: false;
+  isAdmit = false;
+  userId: string;
 
 
 
@@ -35,6 +36,8 @@ export class TeacherOverviewComponent implements OnInit {
               private tokenService: TokenService) { }
 
   ngOnInit(): void {
+    this.userId = this.tokenStorageService.getUser().userDetails;
+
     if (this.tokenService.isUserAuthenticated()){
       this.isAdmit = this.tokenService.isAdmin();
       console.log(this.isAdmit);
@@ -48,5 +51,14 @@ export class TeacherOverviewComponent implements OnInit {
           console.log(x);
         },
         error => console.log('oops', error));
+  }
+
+  canVisitProfile(): boolean {
+    if (this.tokenStorageService.getUser() !== null){
+      if (this.tokenService.isAdmin() || this.userProfile.teacher.id === this.userId){
+        return true;
+      }
+    }
+    return false;
   }
 }

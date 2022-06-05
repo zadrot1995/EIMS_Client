@@ -40,6 +40,7 @@
       </div>
     </div>
 
+    <div *ngIf="canVisitProfile()">
     <div class="row" style="margin-top: 100px;">
       <div class="col-12">
         <div class="d-flex justify-content-center textStyledHeader" >
@@ -80,6 +81,7 @@
           </mat-list-item>
         </mat-nav-list>
       </div>
+    </div>
     </div>
   </div>
   <div class="row" *ngIf="loading">

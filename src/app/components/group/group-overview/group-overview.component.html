@@ -50,7 +50,7 @@
       </div>
     </div>
 
-      <div *ngFor="let student of group.students" routerLink="/students/overview/{{student.id}}">
+      <div *ngFor="let student of group.students" [routerLink]="canVisitProfile(student.id) ? ['/students/overview/' + student.id] : []">
         <div class="row students-list-item">
           <div class="col-8">
                 <h2 style="color: #b71c1c">{{student.firstName}} {{student.secondName}}</h2>

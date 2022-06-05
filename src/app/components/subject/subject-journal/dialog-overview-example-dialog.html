@@ -11,6 +11,17 @@
     </div>
 
   </div>
+  <div class="row" *ngIf="data.markType === 'Practice'">
+    <div class="col-12">
+      <h4>Module</h4>
+    </div>
+    <div class="col-12">
+      <select [(ngModel)]="data.module" class="universitySelect" id="universities2" name="universities2">
+        <option value="1" >1</option>
+        <option value="2">2</option>
+      </select>
+    </div>
+  </div>
   <mat-form-field appearance="fill">
     <mat-label>Mark</mat-label>
     <input [(ngModel)]="data.value" placeholder="Mark" type="number" class="numberInput validate" name="mark">

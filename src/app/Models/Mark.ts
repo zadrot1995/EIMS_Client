@@ -14,4 +14,5 @@ export class Mark {
   studentId: string;
   markType: string;
   value: number;
+  module: number;
 }

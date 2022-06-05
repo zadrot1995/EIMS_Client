@@ -65,6 +65,22 @@ export class TokenService {
       }
     }
     return null;
+  }
+  getRole() {
+    let jwt = localStorage.getItem('jwt');
+    if (jwt !== null) {
 
+
+      let jwtData = jwt.split('.')[1];
+      let decodedJwtJsonData = window.atob(jwtData);
+      let decodedJwtData = JSON.parse(decodedJwtJsonData);
+
+      let role = decodedJwtData['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+      if (role !== null || role !== undefined)
+      {
+        return role;
+      }
+    }
+    return null;
   }
 }

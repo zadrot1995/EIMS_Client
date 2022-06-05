@@ -12,7 +12,7 @@ import {TokenService} from "../../../services/Token.service";
 })
 export class UniversitiesComponent implements OnInit {
   universities: University[];
-  isAdmit: false;
+  isAdmit = false;
   constructor(public httpBaseService: HttpBaseService,
               private tokenService: TokenService) {}
   loading = true;

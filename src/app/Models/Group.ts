@@ -8,7 +8,7 @@ export class Group {
   name: string;
   students: Student[];
   curator: Teacher;
-  curatorId: Guid;
+  curatorId: string;
   institute: Institute;
   instituteId: string;
 }

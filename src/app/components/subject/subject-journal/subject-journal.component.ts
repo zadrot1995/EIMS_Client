@@ -140,29 +140,23 @@ export class SubjectJournalComponent implements OnInit {
     }
   }
 
-
-  onFileChange(evt: any) {
-    /* wire up file reader */
-    const target: DataTransfer = <DataTransfer>(evt.target);
-    if (target.files.length !== 1) throw new Error('Cannot use multiple files');
-    const reader: FileReader = new FileReader();
-    reader.onload = (e: any) => {
-      /* read workbook */
-      const bstr: string = e.target.result;
-      const wb: XLSX.WorkBook = XLSX.read(bstr, { type: 'binary' });
-
-      /* grab first sheet */
-      const wsname: string = wb.SheetNames[0];
-      const ws: XLSX.WorkSheet = wb.Sheets[wsname];
-
-      /* save data */
-      this.data = <AOA>(XLSX.utils.sheet_to_json(ws, { header: 1 }));
-      this.journalService.XlsxToJournal(this.data);
-    };
-    reader.readAsBinaryString(target.files[0]);
-  }
-
   export(): void {
+    var data = [];
+    data[0] = ['Name', 'PC1', 'MK1', 'MO1', 'PC2', 'MK2', 'MO2', 'SMO', 'EO', 'Total', 'EKTS'];
+    var i = 1;
+    for (let y of this.journal.journalRows){
+      data[i] = [];
+      data[i][0] = y.student.firstName + ' ' + y.student.secondName;
+      data[i][1] = y.practicMarks.reduce((sum, current) => sum + current.value, 0);
+    }
+    const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(data);
+
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, this.fileName);
 
   }
 
